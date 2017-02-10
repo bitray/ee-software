@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+     <HEAD>
+      <TITLE>$!page_title测试layout页面</TITLE>
+      <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+      <meta http-equiv="Content-Language" content="zh-CN"/>
+      <META NAME="Generator" CONTENT="EditPlus">
+      <META NAME="Author" CONTENT="">
+      <META NAME="Keywords" CONTENT="">
+      <META NAME="Description" CONTENT="">
+     ## <script type="text/javascript" src="${rc.contextPath}/static/js/jquery-2.1.1.js"></script>
+      <script type="text/javascript" src="${rc.contextPath}/static/js/jquery.min.js"></script>
+      ##<script type="text/javascript" src="${rc.contextPath}/static/js/jquery.easyui.min.js"></script>
+      ##<link rel="stylesheet" type="text/css" href="${rc.contextPath}/static/themes/default/easyui.css">
+     ## <link rel="stylesheet" type="text/css" href="${rc.contextPath}/static/themes/icon.css">
+    <!-- Loading Bootstrap -->
+   ## <link href="${rc.contextPath}/static/dist/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Loading Flat UI -->
+   ## <link href="${rc.contextPath}/static/dist/css/flat-ui.css" rel="stylesheet">
+            <!-- jQuery (necessary for Flat UI's JavaScript plugins) -->
+   ## <script src="${rc.contextPath}/static/dist/js/vendor/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+  ##  <script src="${rc.contextPath}/static/dist/js/flat-ui.min.js"></script>
+    
+
+    <!-- Bootstrap -->
+    <link href="${rc.contextPath}/static/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="${rc.contextPath}/static/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="${rc.contextPath}/static/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- Animate.css -->
+    <link href="${rc.contextPath}/static/vendors/animate.css/animate.min.css" rel="stylesheet">
+    <script src="${rc.contextPath}/static/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+     </HEAD>
+        $screen_content
+ 
+
+</HTML>
+

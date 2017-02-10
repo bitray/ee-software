@@ -1,0 +1,723 @@
+#set($layout="layout/main.vm")
+<!-- bootstrap-daterangepicker -->
+<link
+	href="${rc.contextPath}/static/vendors/bootstrap-daterangepicker/daterangepicker.css"
+	rel="stylesheet">
+<!-- Datatables -->
+<link
+	href="${rc.contextPath}/static/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css"
+	rel="stylesheet">
+<link
+	href="${rc.contextPath}/static/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css"
+	rel="stylesheet">
+<div class="">
+	<div class="page-title">
+		<div class="title_left">
+			<h3 style="color: green;">基础信息查询</h3>
+		</div>
+
+	</div>
+
+	<div class="clearfix"></div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="x_panel">
+				<div class="x_content">
+					<div class="col-xs-1">
+						<!-- required for floating -->
+						<!-- Nav tabs -->
+						<ul class="nav nav-tabs tabs-left">
+							<li><a href="#mall" data-toggle="tab">广场信息</a></li>
+							<li class="active"><a href="#floor" data-toggle="tab">楼层信息</a></li>
+							<li><a href="#trade" data-toggle="tab">业态信息</a></li>
+							<li><a href="#brand" data-toggle="tab">品牌信息</a></li>
+							<li><a href="#account" data-toggle="tab">台账信息</a></li>
+							<li><a href="#view" data-toggle="tab">导视信息</a></li>
+						</ul>
+					</div>
+					<div class="col-xs-10">
+						<!-- Tab panes -->
+						<div class="tab-content">
+							<div class="tab-pane" id="mall">
+								<div class="x_content">
+									<table id="malltable"
+										class="table table-striped table-bordered">
+										<thead>
+											<tr>
+												<th>序号</th>
+												<th>楼层</th>
+												<th>铺位号</th>
+												<th>品牌名称</th>
+												<th>面积</th>
+												<th>业态</th>
+												<th>一级业态</th>
+												<th>二级业态</th>
+												<th>开业日期</th>
+												<th>租金类型</th>
+												<th>经营状态</th>
+												<th>经营类型</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<th scope="row">1</th>
+												<td>Mark</td>
+												<td>Otto</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+											</tr>
+											<tr>
+												<th scope="row">2</th>
+												<td>Jacob</td>
+												<td>Thornton</td>
+												<td>@fat</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+											</tr>
+											<tr>
+												<th scope="row">3</th>
+												<td>Larry</td>
+												<td>the Bird</td>
+												<td>@twitter</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+											</tr>
+										</tbody>
+									</table>
+
+								</div>
+							</div>
+							<div class="tab-pane active" id="floor">
+								<div class="x_content">
+									<table id="floortable"
+										class="table table-striped table-bordered">
+										<thead>
+											<tr>
+												<th>序号</th>
+												<th>楼层名</th>
+												<th>楼层英</th>
+												<th>楼层定</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<th scope="row">1</th>
+												<td>Mark</td>
+												<td>Otto</td>
+												<td>@mdo</td>
+											</tr>
+											<tr>
+												<th scope="row">2</th>
+												<td>Jacob</td>
+												<td>Thornton</td>
+												<td>@fat</td>
+											</tr>
+											<tr>
+												<th scope="row">3</th>
+												<td>Larry</td>
+												<td>the Bird</td>
+												<td>@twitter</td>
+											</tr>
+										</tbody>
+									</table>
+
+								</div>
+							</div>
+							<div class="tab-pane" id="trade">
+								<div class="x_content">
+									<div class="col-md-4">
+										<h4>业态管理</h4>
+										<table class="table  table-hover">
+											<thead>
+												<tr>
+													<th>#</th>
+													<th>业态</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<th scope="row">1</th>
+													<td>Mark</td>
+												</tr>
+												<tr>
+													<th scope="row">2</th>
+													<td>Jacob</td>
+												</tr>
+												<tr>
+													<th scope="row">3</th>
+													<td>Larry</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<div class="col-md-4">
+										<h4>一级品类管理</h4>
+										<table class="table  table-hover">
+											<thead>
+												<tr>
+													<th>#</th>
+													<th>一级品类</th>
+													<th>从属业态</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<th scope="row">1</th>
+													<td>Mark</td>
+													<td>Otto</td>
+												</tr>
+												<tr>
+													<th scope="row">2</th>
+													<td>Jacob</td>
+													<td>Thornton</td>
+												</tr>
+												<tr>
+													<th scope="row">3</th>
+													<td>Larry</td>
+													<td>the Bird</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<div class="col-md-4">
+										<h4>二级品类管理</h4>
+										<table class="table  table-hover">
+											<thead>
+												<tr>
+													<th>#</th>
+													<th>二级品类</th>
+													<th>从属上级</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<th scope="row">1</th>
+													<td>Mark</td>
+													<td>Otto</td>
+												</tr>
+												<tr>
+													<th scope="row">2</th>
+													<td>Jacob</td>
+													<td>Thornton</td>
+												</tr>
+												<tr>
+													<th scope="row">3</th>
+													<td>Larry</td>
+													<td>the Bird</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+							<div class="tab-pane" id="brand">
+								<div class="x_content">
+									<br />
+									<form id="demo-form3" data-parsley-validate
+										class="form-horizontal form-label-left">
+										<div class="form-group">
+											<label class="control-label col-md-1 col-sm-2 col-xs-12"
+												for="last-name">品牌名称 </label>
+											<div class="col-md-3 col-sm-3 col-xs-6">
+												<input id="middle-name" class="form-control" type="text"
+													name="middle-name" readonly="readonly">
+											</div>
+											<label class="control-label col-md-2 col-sm-2 col-xs-12"
+												for="last-name">次级名称 </label>
+											<div class="col-md-3 col-sm-3 col-xs-6">
+												<input id="middle-name" class="form-control" type="text"
+													name="middle-name" readonly="readonly">
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="control-label col-md-1 col-sm-2 col-xs-12"
+												for="last-name">铺位号 </label>
+											<div class="col-md-3 col-sm-3 col-xs-8">
+												<input id="middle-name" class="form-control" type="text"
+													name="middle-name" readonly="readonly">
+											</div>
+											<label class="control-label col-md-2 col-sm-2 col-xs-12"
+												for="last-name">开业日期<span class="required">*</span>
+											</label>
+											<div class="col-md-3 col-sm-3 col-xs-6">
+												<input id="birthday" class="date-picker form-control"
+													required="required" type="text" readonly="readonly">
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="control-label col-md-1 col-sm-2 col-xs-12"
+												for="last-name">面积 </label>
+											<div class="col-md-2 col-sm-2 col-xs-12">
+												<input id="middle-name"
+													class="form-control col-md-7 col-xs-12" type="text"
+													name="middle-name" readonly="readonly">
+											</div>
+											<label for="middle-name"
+												class="control-label col-md-1 col-sm-2 col-xs-12">楼层</label>
+											<div class="col-md-2 col-sm-2 col-xs-12">
+												<select class="form-control" readonly="readonly">
+													<option>请选择</option>
+													<option>晴朗</option>
+													<option>降雨</option>
+													<option>雾霾</option>
+													<option>低温</option>
+												</select>
+											</div>
+
+										</div>
+										<div class="form-group">
+											<label class="control-label col-md-1 col-sm-2 col-xs-12"
+												for="last-name">桌位数 </label>
+											<div class="col-md-2 col-sm-2 col-xs-12">
+												<input id="middle-name"
+													class="form-control col-md-7 col-xs-12" type="text"
+													name="middle-name" readonly="readonly">
+											</div>
+											<label class="control-label col-md-1 col-sm-2 col-xs-12"
+												for="last-name">座位数 </label>
+											<div class="col-md-2 col-sm-2 col-xs-12">
+												<input id="middle-name"
+													class="form-control col-md-7 col-xs-12" type="text"
+													name="middle-name" readonly="readonly">
+											</div>
+
+										</div>
+										<div class="form-group">
+											<label class="control-label col-md-1 col-sm-2 col-xs-12"
+												for="type1">一级品类 </label>
+											<div class="col-md-2 col-sm-2 col-xs-12">
+												<input id="type1" class="form-control col-md-7 col-xs-12"
+													type="text" value="一级品丽" name="middle-name"
+													readonly="readonly">
+											</div>
+											<label class="control-label col-md-1 col-sm-2 col-xs-12"
+												for="type2">二级品类 </label>
+											<div class="col-md-2 col-sm-2 col-xs-12">
+												<input id="type2" class="form-control col-md-7 col-xs-12"
+													type="text" value="二级品丽" name="middle-name"
+													readonly="readonly">
+											</div>
+											<label class="control-label col-md-1 col-sm-2 col-xs-12"
+												for="trade_type">业态 </label>
+											<div class="col-md-2 col-sm-2 col-xs-12">
+												<input type="text" id="trade_type" name="last-name"
+													required="required" class="form-control col-md-7 col-xs-12" readonly="readonly">
+											</div>
+											<button type="submit" class="btn btn-success">选择业态</button>
+										</div>
+										<div class="ln_solid"></div>
+										<div class="form-group">
+											<label for="middle-name"
+												class="control-label col-md-1 col-sm-2 col-xs-12">租金类型</label>
+											<div class="col-md-2 col-sm-2 col-xs-12">
+												<select class="form-control" readonly="readonly">
+													<option>请选择</option>
+													<option>晴朗</option>
+													<option>降雨</option>
+													<option>雾霾</option>
+													<option>低温</option>
+												</select>
+											</div>
+										</div>
+										<div class="form-group">
+											<div class="control-label col-md-4 col-sm-2 col-xs-12">
+												<label class="control-label col-md-4 col-sm-2 col-xs-12"
+													for="last-name">标准租金 </label>
+												<div class="col-md-4 col-sm-2 col-xs-12">
+													<input id="middle-name"
+														class="form-control" type="text"
+														name="middle-name" readonly="readonly">
+												</div>
+												<p class="control-label" style="text-align:left">元/平/月</p>
+											</div>
+											<div class="control-label col-md-4 col-sm-2 col-xs-12">
+												<label class="control-label col-md-4 col-sm-2 col-xs-12"
+													for="last-name">抽成 </label>
+												<div class="col-md-4 col-sm-2 col-xs-12">
+													<input id="middle-name"
+														class="form-control col-md-7 col-xs-12" type="text"
+														name="middle-name" readonly="readonly">
+												</div>
+											</div>
+											<div class="control-label col-md-4 col-sm-2 col-xs-12">
+												<label class="control-label col-md-5 col-sm-2 col-xs-12"
+													for="last-name">标准租金 </label>
+												<div class="col-md-4 col-sm-2 col-xs-12">
+													<input id="middle-name"
+														class="form-control col-md-7 col-xs-12" type="text"
+														name="middle-name" readonly="readonly">
+												</div>
+												<p class="control-label" style="text-align:left">元/月</p>
+											</div>
+										</div>
+										<div class="form-group">
+											<div class="control-label col-md-4 col-sm-2 col-xs-12">
+												<label class="control-label col-md-4 col-sm-2 col-xs-12"
+													for="last-name">标准物业费</label>
+												<div class="col-md-4 col-sm-2 col-xs-12">
+													<input id="sw1" class="form-control col-md-7 col-xs-12"
+														type="text" name="middle-name" readonly="readonly"/>
+												</div>
+												<p class="control-label" style="text-align:left">元/平/月</p>
+											</div>
+											<div class="control-label col-md-4 col-sm-2 col-xs-12">
+												<label class="control-label col-md-4 col-sm-2 col-xs-12"
+													for="last-name">固定物业费</label>
+												<div class="col-md-4 col-sm-2 col-xs-12">
+													<input id="gd1" class="form-control col-md-7 col-xs-12"
+														type="text" name="middle-name" readonly="readonly">
+												</div>
+												<p class="control-label" style="text-align:left">元/月</p>
+											</div>
+
+
+										</div>
+										<div class="form-group">
+											<div class="control-label col-md-4 col-sm-2 col-xs-12">
+												<label class="control-label col-md-4 col-sm-2 col-xs-12"
+													for="last-name">其他标准1 </label>
+												<div class="col-md-4 col-sm-2 col-xs-12">
+													<input id="middle-name"
+														class="form-control col-md-7 col-xs-12" type="text"
+														name="middle-name" readonly="readonly">
+												</div>
+												<p class="control-label" style="text-align:left">元/平/月</p>
+											</div>
+											<div class="control-label col-md-4 col-sm-2 col-xs-12">
+												<label class="control-label col-md-4 col-sm-2 col-xs-12"
+													for="last-name">其他标准2 </label>
+												<div class="col-md-4 col-sm-2 col-xs-12">
+													<input id="middle-name"
+														class="form-control col-md-7 col-xs-12" type="text"
+														name="middle-name" readonly="readonly">
+												</div>
+												<p class="control-label" style="text-align:left">元/平/月</p>
+											</div>
+											<div class="control-label col-md-4 col-sm-2 col-xs-12">
+												<label class="control-label col-md-4 col-sm-2 col-xs-12"
+													for="last-name">其他标准3</label>
+												<div class="col-md-4 col-sm-2 col-xs-12">
+													<input id="middle-name"
+														class="form-control col-md-7 col-xs-12" type="text"
+														name="middle-name" readonly="readonly">
+												</div>
+												<p class="control-label" style="text-align:left">元/平/月</p>
+											</div>
+										</div>
+										<div class="form-group">
+											<div class="control-label col-md-4 col-sm-2 col-xs-12">
+												<label class="control-label col-md-4 col-sm-2 col-xs-12"
+													for="last-name">其他固定1</label>
+												<div class="col-md-4 col-sm-2 col-xs-12">
+													<input id="middle-name"
+														class="form-control col-md-7 col-xs-12" type="text"
+														name="middle-name" readonly="readonly">
+												</div>
+												<p class="control-label" style="text-align:left">元/月</p>
+											</div>
+											<div class="control-label col-md-4 col-sm-2 col-xs-12">
+												<label class="control-label col-md-4 col-sm-2 col-xs-12"
+													for="last-name">其他固定2</label>
+												<div class="col-md-4 col-sm-2 col-xs-12">
+													<input id="middle-name"
+														class="form-control col-md-7 col-xs-12" type="text"
+														name="middle-name" readonly="readonly">
+												</div>
+												<p class="control-label" style="text-align:left">元/月</p>
+											</div>
+											<div class="control-label col-md-4 col-sm-2 col-xs-12">
+												<label class="control-label col-md-4 col-sm-2 col-xs-12"
+													for="last-name">其他固定3</label>
+												<div class="col-md-4 col-sm-2 col-xs-12">
+													<input id="middle-name"
+														class="form-control col-md-7 col-xs-12" type="text"
+														name="middle-name" readonly="readonly">
+												</div>
+												<p class="control-label" style="text-align:left">元/月</p>
+											</div>
+										</div>
+										<div class="ln_solid"></div>
+										<div class="form-group">
+											<label class="control-label col-md-1 col-sm-2 col-xs-12"
+												for="last-name">经营类型 </label>
+											<div class="col-md-3 col-sm-2 col-xs-12">
+												<select class="form-control" readonly="readonly">
+													<option>请选择</option>
+													<option>晴朗</option>
+													<option>降雨</option>
+													<option>雾霾</option>
+													<option>低温</option>
+												</select>
+											</div>
+											<label class="control-label col-md-1 col-sm-2 col-xs-12"
+												for="last-name">租赁类型 </label>
+											<div class="col-md-3 col-sm-2 col-xs-12">
+												<select class="form-control" readonly="readonly">
+													<option>请选择</option>
+													<option>晴朗</option>
+													<option>降雨</option>
+													<option>雾霾</option>
+													<option>低温</option>
+												</select>
+											</div>
+											<label class="control-label col-md-1 col-sm-2 col-xs-12"
+												for="last-name">经营状态 </label>
+											<div class="col-md-3 col-sm-2 col-xs-12">
+												<div id="operation_state" class="btn-group"
+													data-toggle="buttons">
+													<label class="btn btn-default"
+														data-toggle-class="btn-primary"
+														data-toggle-passive-class="btn-default"> <input
+														type="radio" name="state" value="open" readonly="readonly"> &nbsp; 经营中
+														&nbsp;
+													</label> <label class="btn btn-primary"
+														data-toggle-class="btn-primary"
+														data-toggle-passive-class="btn-default"> <input
+														type="radio" name="state" value="closed" readonly="readonly"> 已撤铺
+													</label>
+												</div>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+							<div class="tab-pane" id="account">
+								<div class="x_content">
+									<table id="accounttable"
+										class="table table-striped table-bordered">
+										<thead>
+											<tr>
+												<th>序号</th>
+												<th>楼层</th>
+												<th>铺位号</th>
+												<th>品牌名称</th>
+												<th>面积</th>
+												<th>业态</th>
+												<th>一级业态</th>
+												<th>二级业态</th>
+												<th>开业日期</th>
+												<th>租金类型</th>
+												<th>经营状态</th>
+												<th>经营类型</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<th scope="row">1</th>
+												<td>Mark</td>
+												<td>Otto</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+											</tr>
+											<tr>
+												<th scope="row">2</th>
+												<td>Jacob</td>
+												<td>Thornton</td>
+												<td>@fat</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+											</tr>
+											<tr>
+												<th scope="row">3</th>
+												<td>Larry</td>
+												<td>the Bird</td>
+												<td>@twitter</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<div class="tab-pane" id="view">
+								<div class="x_content">
+									<table id="accounttable"
+										class="table table-striped table-bordered">
+										<thead>
+											<tr>
+												<th>序号</th>
+												<th>楼层</th>
+												<th>铺位号</th>
+												<th>品牌名称</th>
+												<th>面积</th>
+												<th>业态</th>
+												<th>一级业态</th>
+												<th>二级业态</th>
+												<th>开业日期</th>
+												<th>租金类型</th>
+												<th>经营状态</th>
+												<th>经营类型</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<th scope="row">1</th>
+												<td>Mark</td>
+												<td>Otto</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+											</tr>
+											<tr>
+												<th scope="row">2</th>
+												<td>Jacob</td>
+												<td>Thornton</td>
+												<td>@fat</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+											</tr>
+											<tr>
+												<th scope="row">3</th>
+												<td>Larry</td>
+												<td>the Bird</td>
+												<td>@twitter</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+												<td>@mdo</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="clearfix"></div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="${rc.contextPath}/static/vendors/moment/min/moment.min.js"></script>
+<script
+	src="${rc.contextPath}/static/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+<!-- bootstrap-daterangepicker -->
+<script
+	src="${rc.contextPath}/static/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+<script
+	src="${rc.contextPath}/static/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script
+	src="${rc.contextPath}/static/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+<script
+	src="${rc.contextPath}/static/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+<script
+	src="${rc.contextPath}/static/vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+<script
+	src="${rc.contextPath}/static/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+<script
+	src="${rc.contextPath}/static/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#birthday').daterangepicker({
+			singleDatePicker : true,
+			calender_style : "picker_4"
+		}, function(start, end, label) {
+			console.log(start.toISOString(), end.toISOString(), label);
+		});
+		$('#birthday2').daterangepicker({
+			singleDatePicker : true,
+			calender_style : "picker_4"
+		}, function(start, end, label) {
+			console.log(start.toISOString(), end.toISOString(), label);
+		});
+	});
+
+	$(document).ready(function() {
+		var malltableButton = function() {
+			if ($("#malltable").length) {
+				$("#malltable").DataTable({
+					dom : "Bfrtip",
+					buttons : [ {
+						extend : "excel",
+						className : "btn-sm"
+					} ],
+					responsive : true
+				});
+			}
+		};
+
+		var floortableButton = function() {
+			if ($("#floortable").length) {
+				$("#floortable").DataTable({
+					dom : "Bfrtip",
+					buttons : [ {
+						extend : "excel",
+						className : "btn-sm"
+					} ],
+					responsive : true
+				});
+			}
+		};
+
+		TableManageButtons = function() {
+			"use strict";
+			return {
+				init : function() {
+					malltableButton();
+					floortableButton();
+				}
+			};
+		}();
+
+		TableManageButtons.init();
+	});
+</script>
+<!-- /bootstrap-daterangepicker -->

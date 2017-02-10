@@ -1,0 +1,9 @@
+#set($layout="layout/main.vm")
+<a class="easyui-linkbutton" iconCls="icon-ok" href="javascript:void(0)"
+	onclick="login()">登录1</a>
+<a class="easyui-linkbutton" iconCls="icon-cancel"
+	href="javascript:void(0)" onclick="cleardata()">重置2</a>
+<a class="easyui-linkbutton" iconCls="icon-ok" href="javascript:void(0)"
+	onclick="login()">登录3</a>
+<a class="easyui-linkbutton" iconCls="icon-cancel"
+	href="javascript:void(0)" onclick="cleardata()">重置4</a>

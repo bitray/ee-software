@@ -1,0 +1,216 @@
+#set($layout="layout/main.vm")
+<!-- bootstrap-daterangepicker -->
+<link
+	href="${rc.contextPath}/static/vendors/bootstrap-daterangepicker/daterangepicker.css"
+	rel="stylesheet">
+	<link href="${rc.contextPath}/static/vendors/pnotify/dist/pnotify.css" rel="stylesheet">
+    <link href="${rc.contextPath}/static/vendors/pnotify/dist/pnotify.buttons.css" rel="stylesheet">
+    <link href="${rc.contextPath}/static/vendors/pnotify/dist/pnotify.nonblock.css" rel="stylesheet">
+	
+<div class="">
+	<div class="page-title">
+		<div class="title_left">
+			<h3 style="color: green;">楼层数据维护</h3>
+		</div>
+
+	</div>
+
+	<div class="clearfix"></div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<div 
+				class="col-md-3 col-sm-6 col-xs-12">
+				<button type="button" class="btn btn-success" data-toggle="modal"
+					data-target="#createDiv">新增</button>
+				<button type="button" class="btn btn-warning" data-toggle="modal"
+					data-target="#updateDiv">修改</button>
+				<button type="button" class="btn btn-danger">删除</button>
+			</div>
+			<div class="x_panel">
+				<div class="x_content">
+					<table class="table">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>楼层名</th>
+								<th>楼层英</th>
+								<th>楼层定</th>
+								<th>操作</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th scope="row">1</th>
+								<td>Mark</td>
+								<td>Otto</td>
+								<td>@mdo</td>
+								<td><button type="button" class="btn btn-warning">修改</button>
+									<button type="button" class="btn btn-danger">删除</button></td>
+							</tr>
+							<tr>
+								<th scope="row">2</th>
+								<td>Jacob</td>
+								<td>Thornton</td>
+								<td>@fat</td>
+								<td><button type="button" class="btn btn-warning">修改</button>
+									<button type="button" class="btn btn-danger">删除</button></td>
+							</tr>
+							<tr>
+								<th scope="row">3</th>
+								<td>Larry</td>
+								<td>the Bird</td>
+								<td>@twitter</td>
+								<td><button type="button" class="btn btn-warning">修改</button>
+									<button type="button" class="btn btn-danger">删除</button></td>
+							</tr>
+						</tbody>
+					</table>
+
+				</div>
+				<div class="modal fade bs-example-modal-sm" id="createDiv" tabindex="-1"
+					role="dialog" aria-hidden="true">
+					<div class="modal-dialog modal-sm">
+						<div class="modal-content">
+
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">×</span>
+								</button>
+								<h4 class="modal-title" id="myModalLabel2">新增楼层</h4>
+							</div>
+							<div class="modal-body">
+								<form id="demo-form2" data-parsley-validate
+									class="form-horizontal form-label-left">
+									<div class="form-group">
+										<label class="control-label col-md-4 col-sm-3 col-xs-12"
+											for="last-name">楼层名 <span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input type="text" id="last-name" name="last-name"
+												required="required" class="form-control col-md-7 col-xs-12">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="control-label col-md-4 col-sm-3 col-xs-12"
+											for="last-name">楼层英 <span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input type="text" id="last-name" name="last-name"
+												required="required" class="form-control col-md-7 col-xs-12">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="control-label col-md-4 col-sm-3 col-xs-12"
+											for="last-name">楼层定 <span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input type="text" id="last-name" name="last-name"
+												required="required" class="form-control col-md-7 col-xs-12">
+										</div>
+									</div>
+								</form>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default"
+									data-dismiss="modal">关闭</button>
+								<button class="btn btn-default source" onclick="new PNotify({
+                                  title: '保存成功',
+                                  text: '新增成功了，都好了',
+                                  type: 'success',
+                                  styling: 'bootstrap3'
+                              });">保存</button>
+							</div>
+
+						</div>
+					</div>
+				</div>
+				
+				<div class="modal fade bs-example-modal-sm" id="updateDiv" tabindex="-1"
+					role="dialog" aria-hidden="true">
+					<div class="modal-dialog modal-sm">
+						<div class="modal-content">
+
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">×</span>
+								</button>
+								<h4 class="modal-title" id="myModalLabel2">修改楼层</h4>
+							</div>
+							<div class="modal-body">
+								<form id="demo-form3" data-parsley-validate
+									class="form-horizontal form-label-left">
+									<div class="form-group">
+										<label class="control-label col-md-4 col-sm-3 col-xs-12"
+											for="last-name">楼层名 <span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input type="text" id="last-name" name="last-name" value="123"
+												required="required" class="form-control col-md-7 col-xs-12">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="control-label col-md-4 col-sm-3 col-xs-12"
+											for="last-name">楼层英 <span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input type="text" id="last-name" name="last-name" value="123"
+												required="required" class="form-control col-md-7 col-xs-12">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="control-label col-md-4 col-sm-3 col-xs-12"
+											for="last-name">楼层定 <span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input type="text" id="last-name" name="last-name" value="123"
+												required="required" class="form-control col-md-7 col-xs-12">
+										</div>
+									</div>
+								</form>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default"
+									data-dismiss="modal">关闭</button>
+								<button class="btn btn-default source" onclick="new PNotify({
+                                  title: '修改成功',
+                                  text: '修改成功了，数据保存进去了',
+                                  type: 'success',
+                                  styling: 'bootstrap3'
+                              });">保存</button>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="${rc.contextPath}/static/vendors/moment/min/moment.min.js"></script>
+<script
+	src="${rc.contextPath}/static/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+<!-- bootstrap-daterangepicker -->
+<script>
+	$(document).ready(function() {
+		$('#birthday').daterangepicker({
+			singleDatePicker : true,
+			calender_style : "picker_4"
+		}, function(start, end, label) {
+			console.log(start.toISOString(), end.toISOString(), label);
+		});
+		$('#birthday2').daterangepicker({
+			singleDatePicker : true,
+			calender_style : "picker_4"
+		}, function(start, end, label) {
+			console.log(start.toISOString(), end.toISOString(), label);
+		});
+	});
+</script>
+<!-- /bootstrap-daterangepicker -->
+    <script src="${rc.contextPath}/static/vendors/pnotify/dist/pnotify.js"></script>
+    <script src="${rc.contextPath}/static/vendors/pnotify/dist/pnotify.buttons.js"></script>
+    <script src="${rc.contextPath}/static/vendors/pnotify/dist/pnotify.nonblock.js"></script>

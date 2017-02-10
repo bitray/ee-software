@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="net.ray.web.ees.eo.User">
+
+	<insert id="insertUser" parameterType="User" useGeneratedKeys="true"
+		keyColumn="id">
+		INSERT INTO e_person ( `id`,`person_number`,`person_name`,`login_name`,`password`,`sex`,`age`,`birthday`,
+		`image_path`,`entrant_date`,`mac_address`,`home_address`,`remark`,`creation_date`,`tel_number`,
+		`cell_phone`,`created_by`,`update_date`,`updated_by`,`is_alive`,`email`) 
+		VALUES (#{personNumber}, #{personName},  #{loginName},  #{password},  #{sex},  #{age},  #{birthday}
+		,  #{imagePath},  #{entrantDate},  #{macAddress},  #{homeAddress},  #{remark},  #{creationDate}
+		,  #{telNumber},  #{cellPhone},  #{createdBy}, now(),#{updatedBy},now(), 1);
+	</insert>
+
+	<update id="updateUser" parameterType="User">
+		update t_user set name=#{name}, age=#{age} where id=#{id}
+	</update>
+
+	<select id="findById" parameterType="int" resultType="User">
+		select * from e_person where id=#{id}
+	</select>
+	
+	<select id="findByParams" parameterType="User" resultType="User">
+		select * from e_person 
+		<where>
+			<if test="id!=null and id!=''">
+				and id=#{id,jdbcType=BIGINT}
+			</if>
+			<if test="loginName!=null">
+				and login_name=#{loginName}
+			</if>
+			<if test="password!=null">
+				and password=#{password}
+			</if>
+		</where>
+	</select>
+
+	<delete id="deleteUser" parameterType="int">
+		delete from t_user where id=#{id}
+	</delete>
+	
+	
+</mapper>

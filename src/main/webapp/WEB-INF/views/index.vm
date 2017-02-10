@@ -1,0 +1,28 @@
+#set($foo="bar1")
+
+<script type="text/javascript">
+	
+	$(document).ready(function(){
+	  $("#ss").click(function(){
+	  	$("#h22").html("12345===${rc.contextPath}/test/ajax");
+	  });
+	  
+	  $("#ajax").click(function(){
+	  	  $.post("${rc.contextPath}/test/ajax",
+		  {
+		    id:2
+		  },
+		  function(data,status){
+		    $("#h22").html(data);
+		  });
+	  });
+	});
+</script>
+<div id="header">
+  <h1>${rc.contextPath}</h1>
+  <h2>$!foo</h2>
+  <h2>$!userName</h2>
+  <input type="button" id="ss" name="ss" value="click"/>
+  <input type="button" id="ajax" name="tt" value="ajax"/>
+</div>
+<div id="h22"></div>

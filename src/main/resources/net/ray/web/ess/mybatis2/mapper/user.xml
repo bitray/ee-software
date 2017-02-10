@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="net.ray.web.ees.eo.UserH2">
+
+	<insert id="insertUser" parameterType="UserH2" useGeneratedKeys="true"
+		keyColumn="id">
+		INSERT INTO test ( `id`, `name`) 
+		VALUES (#{id}, #{name});
+	</insert>
+
+	<update id="updateUser" parameterType="UserH2">
+		update test set name=#{name}, age=#{age} where id=#{id}
+	</update>
+
+	<select id="findById" parameterType="int" resultType="UserH2">
+		select id,name from test where id=#{id}
+	</select>
+	
+	<select id="findByParams" parameterType="UserH2" resultType="UserH2">
+		select * from test 
+		<where>
+			<if test="id!=null and id!=''">
+				and id=#{id,jdbcType=BIGINT}
+			</if>
+			<if test="userName!=null">
+				and user_name=#{userName}
+			</if>
+			<if test="password!=null">
+				and password=#{password}
+			</if>
+		</where>
+
+
+	</select>
+
+	<delete id="deleteUser" parameterType="int">
+		delete from t_user where id=#{id}
+	</delete>
+</mapper>
