@@ -1,0 +1,199 @@
+#set($layout="layout/main.vm")
+<!-- bootstrap-daterangepicker -->
+<link
+	href="${rc.contextPath}/static/vendors/bootstrap-daterangepicker/daterangepicker.css"
+	rel="stylesheet">
+<!-- Datatables -->
+<link
+	href="${rc.contextPath}/static/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css"
+	rel="stylesheet">
+<link
+	href="${rc.contextPath}/static/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css"
+	rel="stylesheet">
+<div class="">
+	<div class="page-title">
+		<div class="title_left">
+			<h3 style="color: green;">指标数据录入</h3>
+		</div>
+
+	</div>
+
+	<div class="clearfix"></div>
+<br>
+	<div class="row">
+		<div class="col-md-12">
+			<form id="demo-form1" class="form-horizontal form-label-left">
+				<label class="control-label col-md-1"
+					for="last-name" style="text-align:left">年份 </label>
+				<div class="col-md-2 col-sm-6 col-xs-12" style="text-align:left">
+					<input type="text" id="last-name" name="last-name"
+						required="required"
+						class="form-control control-label col-md-7 col-xs-12">
+				</div>
+			</form>
+		</div>
+		<br><br><br>
+		<div class="col-md-12">
+			<div class="x_panel">
+				<div class="x_content">
+					<table id="malltable" class="table table-striped table-bordered">
+						<thead>
+							<tr>
+								<th>序号</th>
+								<th>汇总</th>
+								<th>年度销售（万元）</th>
+								<th>1月</th>
+								<th>2月</th>
+								<th>3月</th>
+								<th>4月</th>
+								<th>5月</th>
+								<th>6月</th>
+								<th>7月</th>
+								<th>8月</th>
+								<th>9月</th>
+								<th>10月</th>
+								<th>11月</th>
+								<th>12月</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th scope="row">1</th>
+								<td>Mark</td>
+								<td>Otto</td>
+								<td>@mdo</td>
+								<td>@mdo</td>
+								<td>@mdo</td>
+								<td>@mdo</td>
+								<td>@mdo</td>
+								<td>@mdo</td>
+								<td>@mdo</td>
+								<td>@mdo</td>
+								<td>@mdo</td>
+								<td>@mdo</td>
+								<td>@mdo</td>
+								<td>@mdo</td>
+							</tr>
+							<tr>
+								<th scope="row">2</th>
+								<td>Jacob</td>
+								<td>Thornton</td>
+								<td>@fat</td>
+								<td>@mdo</td>
+								<td>@mdo</td>
+								<td>@mdo</td>
+								<td>@mdo</td>
+								<td>@mdo</td>
+								<td>@mdo</td>
+								<td>@mdo</td>
+								<td>@mdo</td>
+								<td>@mdo</td>
+								<td>@mdo</td>
+								<td>@mdo</td>
+							</tr>
+							<tr>
+								<th scope="row">3</th>
+								<td>Larry</td>
+								<td>the Bird</td>
+								<td>@twitter</td>
+								<td>@mdo</td>
+								<td>@mdo</td>
+								<td>@mdo</td>
+								<td>@mdo</td>
+								<td>@mdo</td>
+								<td>@mdo</td>
+								<td>@mdo</td>
+								<td>@mdo</td>
+								<td>@mdo</td>
+								<td>@mdo</td>
+								<td>@mdo</td>
+							</tr>
+						</tbody>
+					</table>
+					<br />
+				</div>
+				<form id="demo-form2" data-parsley-validate
+					class="form-horizontal form-label-left">
+					<div class="form-group">
+						<label class="control-label col-md-1 col-sm-3 col-xs-12"
+							for="last-name">日销售预警 </label>
+						<div class="col-md-2 col-sm-6 col-xs-12">
+							<input type="text" id="last-name" name="last-name"
+								required="required" class="form-control col-md-7 col-xs-12">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="middle-name"
+							class="control-label col-md-1 col-sm-3 col-xs-12">日客流预警</label>
+						<div class="col-md-2 col-sm-4 col-xs-10">
+							<input id="middle-name" class="form-control col-md-7 col-xs-12"
+								type="text" name="middle-name">
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="${rc.contextPath}/static/vendors/moment/min/moment.min.js"></script>
+<script
+	src="${rc.contextPath}/static/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+<!-- bootstrap-daterangepicker -->
+<script
+	src="${rc.contextPath}/static/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+<script
+	src="${rc.contextPath}/static/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script
+	src="${rc.contextPath}/static/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+<script
+	src="${rc.contextPath}/static/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+<script
+	src="${rc.contextPath}/static/vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+<script
+	src="${rc.contextPath}/static/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+<script
+	src="${rc.contextPath}/static/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#birthday').daterangepicker({
+			singleDatePicker : true,
+			calender_style : "picker_4"
+		}, function(start, end, label) {
+			console.log(start.toISOString(), end.toISOString(), label);
+		});
+		$('#birthday2').daterangepicker({
+			singleDatePicker : true,
+			calender_style : "picker_4"
+		}, function(start, end, label) {
+			console.log(start.toISOString(), end.toISOString(), label);
+		});
+	});
+
+	$(document).ready(function() {
+		var malltableButton = function() {
+			if ($("#malltable").length) {
+				$("#malltable").DataTable({
+					dom : "Bfrtip",
+					buttons : [ {
+						extend : "excel",
+						className : "btn-sm"
+					} ],
+					responsive : true
+				});
+			}
+		};
+
+		TableManageButtons = function() {
+			"use strict";
+			return {
+				init : function() {
+					malltableButton();
+				}
+			};
+		}();
+
+		TableManageButtons.init();
+	});
+</script>
+<!-- /bootstrap-daterangepicker -->

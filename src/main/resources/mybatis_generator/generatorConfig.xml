@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+  <classPathEntry
+        location="D:\\m3\mysql\\mysql-connector-java\\5.1.6\\mysql-connector-java-5.1.6.jar" />
+  <context id="context1">
+    <jdbcConnection connectionURL="jdbc:mysql://127.0.0.1:3306/eeoa" driverClass="com.mysql.jdbc.Driver" password="1234" userId="root" />
+    <javaModelGenerator targetPackage="net.ray.web.ees.db.eo" targetProject="ee-software" />
+    <sqlMapGenerator targetPackage="net.ray.web.ees.db.mapper" targetProject="ee-software" />
+    <!-- 生成mapxml对应client，也就是接口dao -->      
+    <javaClientGenerator targetPackage="net.ray.web.ees.db.dao"  
+        targetProject="ee-software" type="XMLMAPPER" >  
+        <property name="enableSubPackages" value="false" />  
+    </javaClientGenerator>  
+    <table schema="eeoa" tableName="e_floors" domainObjectName="Floors" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+    <table schema="eeoa" tableName="e_authority" domainObjectName="Authority" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+    <table schema="eeoa" tableName="e_brand_daily_achievement" domainObjectName="BrandDailyAchievement"  enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+    <table schema="eeoa" tableName="e_brand_info" domainObjectName="BrandInfro" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+    <table schema="eeoa" tableName="e_brand_monthly_achievement" domainObjectName="BrandMonthlyAchievement" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+    <table schema="eeoa" tableName="e_brand_year_achievement" domainObjectName="BrandYearAchievement" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+    <table schema="eeoa" tableName="e_holiday" domainObjectName="Holiday" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+    <table schema="eeoa" tableName="e_mall_base" domainObjectName="MallBase" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+    <table schema="eeoa" tableName="e_mall_floor" domainObjectName="MallFloor" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+    <table schema="eeoa" tableName="e_menus" domainObjectName="Menus" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+    <table schema="eeoa" tableName="e_person" domainObjectName="Person" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+    <table schema="eeoa" tableName="e_rent_type" domainObjectName="RentType" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+    <table schema="eeoa" tableName="e_trade_daily_achievement" domainObjectName="TradeDailyAchievement" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+    <table schema="eeoa" tableName="e_trade_monthly_achievement" domainObjectName="TradeMonthlyAchievement" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+    <table schema="eeoa" tableName="e_trade_type" domainObjectName="TradeType" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+    <table schema="eeoa" tableName="e_trade_year_achievement" domainObjectName="TradeYearAchievement" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+    
+  </context>
+</generatorConfiguration>

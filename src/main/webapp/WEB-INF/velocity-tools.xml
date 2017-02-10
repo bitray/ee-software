@@ -1,0 +1,8 @@
+<tool>
+	<key>link</key>
+	<scope>request</scope>
+	<class>org.apache.velocity.tools.view.LinkTool</class>
+	<key>date</key>
+	<scope>application</scope>
+	<class>org.apache.velocity.tools.generic.DateTool</class>
+</tool>

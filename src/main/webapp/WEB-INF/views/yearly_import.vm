@@ -1,0 +1,76 @@
+#set($layout="layout/main.vm")
+    <link href="${rc.contextPath}/static/vendors/bootstrap-fileinput-master/css/fileinput.min.css" rel="stylesheet">
+<div class="">
+            <div class="page-title">
+              <div class="title_left">
+                <h3 style="color: green;">【年度】数据导入</h3>
+              </div>
+
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="x_panel">
+                  <div class="x_content">
+                    <div class="col-md-8 col-lg-8 col-sm-7">
+                      <div class="x_content">
+		                    <br /><br /><br />
+		                    <input id="lefile" type="file" style="display:none">
+		                    <form class="form-horizontal form-label-left">
+		                      <div class="form-group">		
+		                        <div class="col-sm-12">
+		                          <div class="col-md-offset-2 col-sm-2">
+		                                <button type="button" class="btn btn-primary">下载年度模板</button>
+		                          </div>
+		                            <div class="col-sm-6">
+		                            <input id="filepath" type="file" class="file" placeholder="请选择要上传的文件">
+		                                
+		                            </div>
+		                            
+		                                
+		                        </div>
+		                      </div>
+		                      <br /><br /><br />
+		                      <div class="form-group">	
+		                      <div class="col-md-offset-2 col-sm-2">
+		                      <button type="button" class="btn btn-success btn-lg">提交并导入</button>
+		                      </div>
+		                      </div>
+		                    </form>
+		                  </div>
+                    </div>
+                    <div class="col-md-4 col-lg-4 col-sm-5">
+                    <h4><strong>—  提示栏  —</strong></h4>
+                    <div class="x_panel tile fixed_height_320 scrollable" style="overflow:scroll;height:400px">
+                      <h2>【导入成功】</h2>
+						<p>成功导入20161118业绩数据</p>
+						<p>有以下销售数据为零：</p>
+						<p>1、东北风：0</p>
+						<p>2、木九十：0</p>
+						<p>3、IS：0</p>
+						
+						<h2>导入失败、请确认模板是否正确</h2>				
+							
+						<h2>【导入成功】</h2>
+						<p>成功导入20161118业绩数据</p>
+						<p>有以下销售数据为零：</p>
+						<p>1、东北风：0</p>
+						<p>2、木九十：0</p>
+						<p>3、IS：0</p>
+						
+						<p>以下数据更新失败、请确认：</p>
+						<p>1、ONLY</p>
+						<p>2、西北风</p>
+						<p>3、</p>
+						</div>
+                    </div>
+                    <div class="clearfix"></div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <script src="${rc.contextPath}/static/vendors/bootstrap-fileinput-master/js/fileinput.min.js"></script>
