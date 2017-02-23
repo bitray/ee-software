@@ -1,5 +1,7 @@
 package net.ray.web.ees.db.dao;
 
+import java.util.List;
+
 import net.ray.web.ees.db.eo.Person;
 
 public interface PersonMapper {
@@ -52,4 +54,6 @@ public interface PersonMapper {
     int updateByPrimaryKey(Person record);
     
     Person findByParams(Person person);
+    
+    List<Person> getAllUsers();
 }

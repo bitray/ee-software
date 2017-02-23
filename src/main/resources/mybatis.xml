@@ -62,6 +62,7 @@
 		<mapper resource="net/ray/web/ess/mybatis/mapper/menu.xml" />
 		
 		<mapper resource="net/ray/web/ess/mybatis/mapper/PersonMapper.xml" />
+		<mapper resource="net/ray/web/ess/mybatis/mapper/FloorsMapper.xml" />
 <!-- 		<mapper resource="net.ray.web.ess.db.mapper.authority.xml" /> -->
 <!-- 		<mapper resource="net.ray.web.ess.db.mapper.menu.xml" /> -->
 	</mappers>

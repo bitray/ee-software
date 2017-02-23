@@ -154,4 +154,10 @@
       is_alive = #{isAlive,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+  <select id="getFloors" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from e_floors
+  </select>
 </mapper>

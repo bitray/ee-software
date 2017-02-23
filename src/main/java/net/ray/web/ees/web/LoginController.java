@@ -1,5 +1,7 @@
 package net.ray.web.ees.web;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -9,10 +11,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import net.ray.web.ees.bo.FloorBO;
 import net.ray.web.ees.bo.PersonBO;
 import net.ray.web.ees.bo.UserBO;
+import net.ray.web.ees.db.eo.Floors;
 import net.ray.web.ees.db.eo.Person;
 import net.ray.web.ees.eo.User;
+import net.ray.web.ees.util.LocalCache;
 
 @Controller
 @RequestMapping("/login")
@@ -20,6 +25,9 @@ public class LoginController {
 	
 	@Resource(name="personBO")
 	public PersonBO personBO;
+	
+	@Resource(name="floorBO")
+	private FloorBO floorBO;
 	
 	@RequestMapping("/t1")
 	public String lgoinInit(HttpServletRequest request){
@@ -48,6 +56,9 @@ public class LoginController {
 				Cookie cookie = new Cookie("loginInfo","loginSuccess");
 				cookie.setPath("/");
 				response.addCookie(cookie);
+				
+				List<Floors> floors=floorBO.getFloors();
+				LocalCache.setFloors(floors);
 			}
 		}else{
 			isSuccess="3";

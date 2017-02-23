@@ -11,7 +11,168 @@
 <link
 	href="${rc.contextPath}/static/vendors/pnotify/dist/pnotify.nonblock.css"
 	rel="stylesheet">
+<script type="text/javascript">
+	function createUser(){
+		var personName=$("#personName").val();
+		var jobTitle=$("#jobTitle").val();
+		var loginName=$("#loginName").val();
+		var password=$("#password").val();
+		var authority=$("#authority").val();
+		var personNumber=$("#personNumber").val();
+		$.post("${rc.contextPath}/base_data/user_data_insert", {
+			personName : personName,
+			personNumber : personNumber,
+			jobTitle : jobTitle,
+			loginName : loginName,
+			password : password,
+			authority : authority
+		}, function(data, status) {
+			if (data) {
+				new PNotify({
+	                  title: '保存成功',
+	                  text: '新增成功了，都好了',
+	                  type: 'success',
+	                  width: '400px',
+	                  hide: false,
+    				  min_height: '100px',
+	                  styling: 'bootstrap3',
+	                  confirm: {
+				        confirm: true,
+				        buttons: [{
+				            text: '确定',
+				            addClass: 'btn-primary',
+				            click: function(notice) {
+				                notice.remove();
+				                window.location.reload();
+				            }
+				        },
+				        null]
+					    }
+	              });
+			} else {
+				new PNotify({
+                  title: '错误',
+                  text: '数据添加失败',
+                  type: 'error',
+                  width: '400px',
+					min_height: '100px',
+                  styling: 'bootstrap3',
+                  confirm: {
+				        confirm: true,
+				        buttons: [{
+				            text: '确定',
+				            addClass: 'btn-primary',
+				            click: function(notice) {
+				                notice.remove();
+				            }
+				        },
+				        null]
+					    }
+              });
+			}
+		});
+	}
 
+	function openUpdatePage(personName,jobTitle,loginName,password,authority,personNumber,userId){
+		$("#personName1").val(personName);
+		$("#jobTitle1").val(jobTitle);
+		$("#loginName1").val(loginName);
+		$("#password1").val(password);
+		$("#authority1").val(authority);
+		$("#personNumber1").val(personNumber);
+		$("#userId").val(userId);
+	}
+
+	function updateUser(){
+		var personName=$("#personName1").val();
+		var jobTitle=$("#jobTitle1").val();
+		var loginName=$("#loginName1").val();
+		var password=$("#password1").val();
+		var authority=$("#authority1").val();
+		var personNumber=$("#personNumber1").val();
+		var userId=$("#userId").val();
+		$.post("${rc.contextPath}/base_data/user_data_update", {
+			personName : personName,
+			personNumber : personNumber,
+			jobTitle : jobTitle,
+			loginName : loginName,
+			password : password,
+			id : userId,
+			authority : authority
+		}, function(data, status) {
+			if (data) {
+				new PNotify({
+	                  title: '保存成功',
+	                  text: '更新成功了，都好了',
+	                  type: 'success',
+	                  width: '400px',
+	                  hide: false,
+    				  min_height: '100px',
+	                  styling: 'bootstrap3',
+	                  confirm: {
+				        confirm: true,
+				        buttons: [{
+				            text: '确定',
+				            addClass: 'btn-primary',
+				            click: function(notice) {
+				                notice.remove();
+				                window.location.reload();
+				            }
+				        },
+				        null]
+					    }
+	              });
+			} else {
+				new PNotify({
+                  title: '错误',
+                  text: '数据更新失败',
+                  type: 'error',
+                  width: '400px',
+					min_height: '100px',
+                  styling: 'bootstrap3',
+                  confirm: {
+				        confirm: true,
+				        buttons: [{
+				            text: '确定',
+				            addClass: 'btn-primary',
+				            click: function(notice) {
+				                notice.remove();
+				            }
+				        },
+				        null]
+					    }
+              });
+			}
+		});
+	}
+
+	function deleteUser(userId){
+		$.post("${rc.contextPath}/base_data/user_data_delete", {
+			userId : userId
+		}, function(data, status) {
+			if (data) {
+				window.location.reload();
+			} 
+		});
+	}
+	
+	$(document).ready(function() {
+		$("#createUser").click(function(){
+			createUser();
+		});
+		$("#cancelUser").click(function(){
+			$("#demo-form1")[0].reset()
+		});
+		$("#userUpadte").click(function(){
+			updateUser();
+		});
+		$("#cancelUpdate").click(function(){
+			$("#demo-form2")[0].reset()
+		});
+		
+		
+	});
+</script>
 <div class="">
 	<div class="page-title">
 		<div class="title_left">
@@ -28,9 +189,6 @@
 				class="col-md-3 col-sm-6 col-xs-12">
 				<button type="button" class="btn btn-success" data-toggle="modal"
 					data-target="#createDiv">新增</button>
-				<button type="button" class="btn btn-warning" data-toggle="modal"
-					data-target="#updateDiv">修改</button>
-				<button type="button" class="btn btn-danger">删除</button>
 			</div>
 			<div class="x_panel">
 				<div class="x_content">
@@ -43,33 +201,26 @@
 								<th>登录账号</th>
 								<th>登录密码</th>
 								<th>用户权限</th>
+								<th>操作</th>
 							</tr>
 						</thead>
 						<tbody>
+						#foreach( $elem in $list)
 							<tr>
-								<th scope="row">1</th>
-								<td>Mark</td>
-								<td>Otto</td>
-								<td>@mdo</td>
-								<td>@mdo</td>
-								<td>@mdo</td>
+								<th scope="row">$!{velocityCount}</th>
+								<td>$!{elem.personName}</td>
+								<td>$!{elem.jobTitle}</td>
+								<td>$!{elem.loginName}</td>
+								<td>$!{elem.password}</td>
+								<td>$!{elem.authority}</td>
+								<td>
+								<button id="updateUser$!{velocityCount}" type="button" 
+								class="btn btn-warning" data-toggle="modal" data-target="#updateDiv" 
+								onclick="openUpdatePage('$!{elem.personName}','$!{elem.jobTitle}','$!{elem.loginName}','$!{elem.password}','$!{elem.authority}','$!{elem.personNumber}','$!{elem.id}')">修改</button>
+								<button id="deleteUser$!{velocityCount}" type="button" class="btn btn-danger" onclick="deleteUser('$!{elem.id}')">删除</button>
+								</td>
 							</tr>
-							<tr>
-								<th scope="row">2</th>
-								<td>Jacob</td>
-								<td>Thornton</td>
-								<td>@fat</td>
-								<td>@mdo</td>
-								<td>@mdo</td>
-							</tr>
-							<tr>
-								<th scope="row">3</th>
-								<td>Larry</td>
-								<td>the Bird</td>
-								<td>@twitter</td>
-								<td>@mdo</td>
-								<td>@mdo</td>
-							</tr>
+						#end
 						</tbody>
 					</table>
 
@@ -87,67 +238,69 @@
 								<h4 class="modal-title" id="myModalLabel2">新增用户</h4>
 							</div>
 							<div class="modal-body">
-								<form id="demo-form2" data-parsley-validate
+								<form id="demo-form1" data-parsley-validate
 									class="form-horizontal form-label-left">
 									<div class="form-group">
 										<label class="control-label col-md-4 col-sm-3 col-xs-12"
-											for="last-name">用户姓名 <span class="required">*</span>
+											for="personName">用户姓名 <span class="required">*</span>
 										</label>
 										<div class="col-md-6 col-sm-6 col-xs-12">
-											<input type="text" id="last-name" name="last-name"
+											<input type="text" id="personName" name="personName"
 												required="required" class="form-control col-md-7 col-xs-12">
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="control-label col-md-4 col-sm-3 col-xs-12"
-											for="last-name">用户职务 <span class="required">*</span>
+											for="personNumber">用户编号 <span class="required">*</span>
 										</label>
 										<div class="col-md-6 col-sm-6 col-xs-12">
-											<input type="text" id="last-name" name="last-name"
+											<input type="text" id="personNumber" name="personNumber"
 												required="required" class="form-control col-md-7 col-xs-12">
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="control-label col-md-4 col-sm-3 col-xs-12"
-											for="last-name">登录账号 <span class="required">*</span>
+											for="jobTitle">用户职务 <span class="required">*</span>
 										</label>
 										<div class="col-md-6 col-sm-6 col-xs-12">
-											<input type="text" id="last-name" name="last-name"
+											<input type="text" id="jobTitle" name="jobTitle"
 												required="required" class="form-control col-md-7 col-xs-12">
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="control-label col-md-4 col-sm-3 col-xs-12"
-											for="last-name">登录密码 <span class="required">*</span>
+											for="loginName">登录账号 <span class="required">*</span>
 										</label>
 										<div class="col-md-6 col-sm-6 col-xs-12">
-											<input type="text" id="last-name" name="last-name"
+											<input type="text" id="loginName" name="loginName"
 												required="required" class="form-control col-md-7 col-xs-12">
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="control-label col-md-4 col-sm-3 col-xs-12"
-											for="last-name">用户权限<span class="required">*</span>
+											for="password">登录密码 <span class="required">*</span>
 										</label>
 										<div class="col-md-6 col-sm-6 col-xs-12">
-											<input type="text" id="last-name" name="last-name"
+											<input type="text" id="password" name="password"
+												required="required" class="form-control col-md-7 col-xs-12">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="control-label col-md-4 col-sm-3 col-xs-12"
+											for="authority">用户权限<span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input type="text" id="authority" name="authority"
 												required="required" class="form-control col-md-7 col-xs-12">
 										</div>
 									</div>
 								</form>
 							</div>
 							<div class="modal-footer">
-								<button type="button" class="btn btn-default"
+								<button id="cancelUser" type="button" class="btn btn-default"
 									data-dismiss="modal">关闭</button>
-								<button class="btn btn-default source"
-									onclick="new PNotify({
-                                  title: '保存成功',
-                                  text: '新增成功了，都好了',
-                                  type: 'success',
-                                  styling: 'bootstrap3'
-                              });">保存</button>
+								<button id="createUser" class="btn btn-default source">保存</button>
 							</div>
-
 						</div>
 					</div>
 				</div>
@@ -169,61 +322,64 @@
 									class="form-horizontal form-label-left">
 									<div class="form-group">
 										<label class="control-label col-md-4 col-sm-3 col-xs-12"
-											for="last-name">用户姓名 <span class="required">*</span>
+											for="personName1">用户姓名 <span class="required">*</span>
 										</label>
 										<div class="col-md-6 col-sm-6 col-xs-12">
-											<input type="text" id="last-name" name="last-name"
+											<input type="text" id="personName1" name="personName1"
 												required="required" class="form-control col-md-7 col-xs-12">
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="control-label col-md-4 col-sm-3 col-xs-12"
-											for="last-name">用户职务 <span class="required">*</span>
+											for="personNumber1">用户编号 <span class="required">*</span>
 										</label>
 										<div class="col-md-6 col-sm-6 col-xs-12">
-											<input type="text" id="last-name" name="last-name"
+											<input type="text" id="personNumber1" name="personNumber1"
 												required="required" class="form-control col-md-7 col-xs-12">
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="control-label col-md-4 col-sm-3 col-xs-12"
-											for="last-name">登录账号 <span class="required">*</span>
+											for="jobTitle1">用户职务 <span class="required">*</span>
 										</label>
 										<div class="col-md-6 col-sm-6 col-xs-12">
-											<input type="text" id="last-name" name="last-name"
+											<input type="text" id="jobTitle1" name="jobTitle1"
 												required="required" class="form-control col-md-7 col-xs-12">
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="control-label col-md-4 col-sm-3 col-xs-12"
-											for="last-name">登录密码 <span class="required">*</span>
+											for="loginName1">登录账号 <span class="required">*</span>
 										</label>
 										<div class="col-md-6 col-sm-6 col-xs-12">
-											<input type="text" id="last-name" name="last-name"
+											<input type="text" id="loginName1" name="loginName1"
 												required="required" class="form-control col-md-7 col-xs-12">
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="control-label col-md-4 col-sm-3 col-xs-12"
-											for="last-name">用户权限<span class="required">*</span>
+											for="password1">登录密码 <span class="required">*</span>
 										</label>
 										<div class="col-md-6 col-sm-6 col-xs-12">
-											<input type="text" id="last-name" name="last-name"
+											<input type="text" id="password1" name="password1"
 												required="required" class="form-control col-md-7 col-xs-12">
 										</div>
 									</div>
+									<div class="form-group">
+										<label class="control-label col-md-4 col-sm-3 col-xs-12"
+											for="authority1">用户权限<span class="required">*</span>
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input type="text" id="authority1" name="authority1"
+												required="required" class="form-control col-md-7 col-xs-12">
+										</div>
+									</div>
+									<input id="userId" type="hidden" value=""/>
 								</form>
 							</div>
 							<div class="modal-footer">
-								<button type="button" class="btn btn-default"
-									data-dismiss="modal">关闭</button>
-								<button class="btn btn-default source"
-									onclick="new PNotify({
-                                  title: '修改成功',
-                                  text: '修改成功了，数据保存进去了',
-                                  type: 'success',
-                                  styling: 'bootstrap3'
-                              });">保存</button>
+								<button id="cancelUpdate" type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+								<button id="userUpadte" class="btn btn-default source">保存</button>
 							</div>
 
 						</div>
@@ -256,7 +412,9 @@
 </script>
 <!-- /bootstrap-daterangepicker -->
 <script src="${rc.contextPath}/static/vendors/pnotify/dist/pnotify.js"></script>
+	<script src="${rc.contextPath}/static/vendors/pnotify/dist/pnotify.confirm.js"></script>
 <script
 	src="${rc.contextPath}/static/vendors/pnotify/dist/pnotify.buttons.js"></script>
 <script
 	src="${rc.contextPath}/static/vendors/pnotify/dist/pnotify.nonblock.js"></script>
+	<script src="${rc.contextPath}/static/vendors/validator/validator.js"></script>
