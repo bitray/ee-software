@@ -40,7 +40,7 @@
 				<div class="left_col scroll-view">
 					<div class="navbar nav_title" style="border: 0;">
 						<a href="${rc.contextPath}/main/init" class="site_title"><i class="fa fa-paw"></i>
-							<span>XX商场管理系统</span></a>
+							<span>商场管理系统</span></a>
 					</div>
 
 					<div class="clearfix"></div>
@@ -53,7 +53,7 @@
 						</div>
 						<div class="profile_info">
 							<span>Welcome,</span>
-							<h2>John Doe</h2>
+							<h2>$!{currentUser.personName}</h2>
 						</div>
 					</div>
 					<!-- /menu profile quick info -->
@@ -156,13 +156,13 @@
 							<a id="menu_toggle"><i class="fa fa-bars"></i></a>
 						</div>
 						<ul class="nav navbar-nav navbar-left">
-						<li><a id="menu_toggle">当前时间：2016年12月1日【周日】12:23:34</a></li>
+						<li><a id="menu_toggle">当前时间：$!dateTool.format('yyyy-MM-dd HH:mm:ss ',$!{currentDate})</a></li>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
 							<li class=""><a href="javascript:;"
 								class="user-profile dropdown-toggle" data-toggle="dropdown"
 								aria-expanded="false"> <img
-									src="${rc.contextPath}/static/images/img.jpg" alt="">刘然 <span
+									src="${rc.contextPath}/static/images/img.jpg" alt="">$!{currentUser.personName} <span
 									class=" fa fa-angle-down"></span>
 							</a>
 								<ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -174,7 +174,7 @@
 									<li><a href="login.html"><i
 											class="fa fa-sign-out pull-right"></i> Log Out44</a></li>
 								</ul></li>
-							<li><a id="menu_toggle">截止今天、本项目已经开业6年5个月67天 </a></li>
+							<li><a id="menu_toggle">截止今天、本项目已经开业$!{openDays}天 </a></li>
 						</ul>
 					</nav>
 				</div>

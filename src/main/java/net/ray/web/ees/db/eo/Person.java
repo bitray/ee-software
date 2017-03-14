@@ -194,9 +194,17 @@ public class Person {
     
     private String jobTitle;
     private String authority;
-    
+    private Integer mallId;
 
-    public String getJobTitle() {
+    public Integer getMallId() {
+		return mallId;
+	}
+
+	public void setMallId(Integer mallId) {
+		this.mallId = mallId;
+	}
+
+	public String getJobTitle() {
 		return jobTitle;
 	}
 

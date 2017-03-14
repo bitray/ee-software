@@ -53,10 +53,7 @@ public class LoginController {
 			Person returnUser=personBO.getUser(user);
 			isSuccess=returnUser!=null?"1":"2";
 			if(returnUser!=null){
-				Cookie cookie = new Cookie("loginInfo","loginSuccess");
-				cookie.setPath("/");
-				response.addCookie(cookie);
-				
+				this.writeLoginInfo(response, returnUser);
 				List<Floors> floors=floorBO.getFloors();
 				LocalCache.setFloors(floors);
 			}
@@ -64,5 +61,18 @@ public class LoginController {
 			isSuccess="3";
 		}
 		return isSuccess;
+	}
+	
+	
+	private void writeLoginInfo(HttpServletResponse response,Person returnUser){
+		Cookie cookie = new Cookie("loginInfo","loginSuccess");
+		cookie.setPath("/");
+		cookie.setMaxAge(24*60*60);
+		response.addCookie(cookie);
+		Cookie nameCookie = new Cookie("currentUser",returnUser.getId().toString());
+		nameCookie.setPath("/");
+		nameCookie.setMaxAge(24*60*60);
+		response.addCookie(nameCookie);
+		LocalCache.getCurrentMap().put(returnUser.getId().toString(), returnUser);
 	}
 }
