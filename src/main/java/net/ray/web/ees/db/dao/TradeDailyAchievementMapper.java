@@ -1,5 +1,9 @@
 package net.ray.web.ees.db.dao;
 
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+
 import net.ray.web.ees.db.eo.TradeDailyAchievement;
 
 public interface TradeDailyAchievementMapper {
@@ -50,4 +54,10 @@ public interface TradeDailyAchievementMapper {
      * @mbg.generated Thu Nov 24 17:04:55 CST 2016
      */
     int updateByPrimaryKey(TradeDailyAchievement record);
+    
+    List<TradeDailyAchievement> selectByDate(Date date);
+    List<TradeDailyAchievement> selectByYesterday(Map<String,Object> map);
+    Float countByYesterday();
+    List<TradeDailyAchievement> selectByDurationAndTrade(Map<String,Object> map);
+    Float countByDurationAndTrade(Map<String,Object> map);
 }

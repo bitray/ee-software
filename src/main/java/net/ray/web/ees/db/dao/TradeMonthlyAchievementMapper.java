@@ -1,5 +1,7 @@
 package net.ray.web.ees.db.dao;
 
+import java.util.List;
+
 import net.ray.web.ees.db.eo.TradeMonthlyAchievement;
 
 public interface TradeMonthlyAchievementMapper {
@@ -50,4 +52,6 @@ public interface TradeMonthlyAchievementMapper {
      * @mbg.generated Thu Nov 24 17:04:55 CST 2016
      */
     int updateByPrimaryKey(TradeMonthlyAchievement record);
+    
+    List<TradeMonthlyAchievement> selectBySelective(TradeMonthlyAchievement tradeMonthlyAchievement);
 }

@@ -2,6 +2,7 @@ package net.ray.web.ees.web;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
@@ -9,11 +10,19 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import net.ray.web.ees.bo.MallBO;
+import net.ray.web.ees.bo.TradeDailyBO;
+import net.ray.web.ees.bo.TradeMonthlyBO;
+import net.ray.web.ees.bo.TradeYearlyBO;
 import net.ray.web.ees.bo.UserBO;
 import net.ray.web.ees.db.eo.MallBase;
 import net.ray.web.ees.db.eo.Person;
+import net.ray.web.ees.db.eo.TradeDailyAchievement;
+import net.ray.web.ees.db.eo.TradeMonthlyAchievement;
+import net.ray.web.ees.db.eo.TradeYearAchievement;
+import net.ray.web.ees.util.DateUtil;
 import net.ray.web.ees.util.LocalCache;
 
 @Controller
@@ -23,7 +32,12 @@ public class MainController {
 	public UserBO userBO;
 	@Resource
 	public MallBO mallBO;
-	
+	@Resource
+	public TradeDailyBO tradeDailyBO;
+	@Resource
+	public TradeMonthlyBO tradeMonthlyBO;
+	@Resource
+	public TradeYearlyBO tradeYearlyBO;
 	@RequestMapping("/init")
 	public String mainInit(HttpServletRequest request){
 		Cookie[] cookies = request.getCookies();//这样便可以获取一个cookie数组
@@ -45,8 +59,44 @@ public class MainController {
 			request.setAttribute("mall", mallBase);
 			int days=countDaysBetweenTwoDate(mallBase.getProOpenDate(),new Date());
 			request.setAttribute("openDays", days);
-//			String timeString=getDurationBetweenTwoDate(mallBase.getProOpenDate(),new Date());
-//			System.out.println(timeString);
+			
+			List<TradeDailyAchievement> achievements=tradeDailyBO.getDailyTradeYesterday(Boolean.FALSE);
+			List<TradeDailyAchievement> mallAchievements=tradeDailyBO.getDailyTradeYesterday(Boolean.TRUE);
+			int yesterdayCustomers=0;
+			float yesterdaySales=0f;
+			for(TradeDailyAchievement mallAchievement:mallAchievements){
+				yesterdayCustomers+=mallAchievement.getCustomerVolume();
+				yesterdaySales+=mallAchievement.getSalesAmount();
+			}
+			request.setAttribute("achievements", achievements);
+			request.setAttribute("yesterdayCustomers", yesterdayCustomers);
+			request.setAttribute("yesterdaySales", yesterdaySales);
+			
+			TradeMonthlyAchievement params=new TradeMonthlyAchievement();
+			params.setTradeId(11);
+			params.setSaleMonth(new Date());
+			List<TradeMonthlyAchievement> monthlyAchievements=tradeMonthlyBO.getMonthlyAchievementBycondition(params);
+			int monthCustomers=0;
+			float monthSales=0f;
+			for(TradeMonthlyAchievement monthlyTrade:monthlyAchievements){
+				monthCustomers+=monthlyTrade.getCustomerVolume();
+				monthSales+=monthlyTrade.getSalesAmount();
+			}
+			request.setAttribute("monthCustomers", monthCustomers);
+			request.setAttribute("monthSales", monthSales);
+
+			TradeYearAchievement param=new TradeYearAchievement();
+			param.setTradeId(11);
+			param.setSaleYear(DateUtil.getCurrentYear());
+			int yearCustomers=0;
+			float yearSales=0f;
+			List<TradeYearAchievement> yearAchievements=tradeYearlyBO.getTradeYearAchievementsByCondition(param);
+			for(TradeYearAchievement yearAchievement:yearAchievements){
+				yearCustomers+=yearAchievement.getCustomerVolume();
+				yearSales+=yearAchievement.getSalesAmount();
+			}
+			request.setAttribute("yearCustomers", yearCustomers);
+			request.setAttribute("yearSales", yearSales);
 		}
 		return "welcome";
 	}
@@ -59,19 +109,12 @@ public class MainController {
 		return days;
 	}
 	
-	private String getDurationBetweenTwoDate(Date fromDate, Date toDate){
-		String timeString=null;
-		int[] result=new int[3];
-		Calendar fromCalendar=Calendar.getInstance();
-		fromCalendar.setTime(fromDate);
-		Calendar toCalendar=Calendar.getInstance();
-		toCalendar.setTime(toDate);
-		result[0]=toCalendar.get(Calendar.YEAR)-fromCalendar.get(Calendar.YEAR);
-		result[1]=toCalendar.get(Calendar.MONTH)-fromCalendar.get(Calendar.MONTH);
-		result[2]=toCalendar.get(Calendar.DAY_OF_MONTH)-fromCalendar.get(Calendar.DAY_OF_MONTH);
-		System.out.println(fromDate);
-		timeString=result[0]+"年，"+result[1]+"月，"+result[2]+"天";
-		return timeString;
+	
+	@RequestMapping("/customer_volume")
+	@ResponseBody
+	public List<TradeDailyAchievement> getCustomerVolume(){
+		List<TradeDailyAchievement> achievements=tradeDailyBO.getDailyTradeByIdForCurrentWeek(11);
+		return achievements;
 	}
 	
 	@RequestMapping("/data_enter")
