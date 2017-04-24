@@ -41,6 +41,7 @@
     <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
     <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
     <result column="is_alive" jdbcType="BIT" property="isAlive" />
+    <result column="brand_name" jdbcType="VARCHAR" property="brandName" />
   </resultMap>
   <sql id="Base_Column_List">
     <!--
@@ -53,7 +54,7 @@
     other_charge_std1, other_charge_std2, other_charge_std3, other_charge1, other_charge2, 
     other_charge3, other_fixed_charge1, other_fixed_charge2, other_fixed_charge3, table_num, 
     seats_num, oper_state, oper_type, lease_type, start_time, close_time, creation_date, 
-    created_by, update_date, update_by, is_alive
+    created_by, update_date, update_by, is_alive,brand_name
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     <!--
@@ -92,7 +93,7 @@
       oper_state, oper_type, lease_type, 
       start_time, close_time, creation_date, 
       created_by, update_date, update_by, 
-      is_alive)
+      is_alive,brand_name)
     values (#{id,jdbcType=INTEGER}, #{poiNum,jdbcType=VARCHAR}, #{floor,jdbcType=VARCHAR}, 
       #{brandIdRoot,jdbcType=INTEGER}, #{brandIdLevel1,jdbcType=INTEGER}, #{brandIdLevel2,jdbcType=INTEGER}, 
       #{rentType,jdbcType=VARCHAR}, #{fixedRent,jdbcType=VARCHAR}, #{fixedRentStandard,jdbcType=VARCHAR}, 
@@ -104,7 +105,7 @@
       #{operState,jdbcType=VARCHAR}, #{operType,jdbcType=VARCHAR}, #{leaseType,jdbcType=VARCHAR}, 
       #{startTime,jdbcType=DATE}, #{closeTime,jdbcType=DATE}, #{creationDate,jdbcType=TIMESTAMP}, 
       #{createdBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, 
-      #{isAlive,jdbcType=BIT})
+      #{isAlive,jdbcType=BIT},#{brandName,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="net.ray.web.ees.db.eo.BrandInfro">
     <!--
@@ -216,6 +217,9 @@
       <if test="isAlive != null">
         is_alive,
       </if>
+      <if test="brandName != null">
+        brand_name,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -319,6 +323,9 @@
       </if>
       <if test="isAlive != null">
         #{isAlive,jdbcType=BIT},
+      </if>
+      <if test="brandName != null">
+        #{brandName,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -429,6 +436,9 @@
       <if test="isAlive != null">
         is_alive = #{isAlive,jdbcType=BIT},
       </if>
+      <if test="brandName != null">
+        brand_name=#{brandName,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -471,7 +481,118 @@
       created_by = #{createdBy,jdbcType=VARCHAR},
       update_date = #{updateDate,jdbcType=TIMESTAMP},
       update_by = #{updateBy,jdbcType=VARCHAR},
-      is_alive = #{isAlive,jdbcType=BIT}
+      is_alive = #{isAlive,jdbcType=BIT},
+      brand_name=#{brandName,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+   <select id="selectBySelective" parameterType="net.ray.web.ees.db.eo.BrandInfro" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from e_brand_info
+    <where>
+      <if test="poiNum != null">
+        poi_num = #{poiNum,jdbcType=VARCHAR} and 
+      </if>
+      <if test="floor != null">
+        floor = #{floor,jdbcType=VARCHAR} and 
+      </if>
+      <if test="brandIdRoot != null">
+        brand_id_root = #{brandIdRoot,jdbcType=INTEGER} and 
+      </if>
+      <if test="brandIdLevel1 != null">
+        brand_id_level1 = #{brandIdLevel1,jdbcType=INTEGER} and 
+      </if>
+      <if test="brandIdLevel2 != null">
+        brand_id_level2 = #{brandIdLevel2,jdbcType=INTEGER} and 
+      </if>
+      <if test="rentType != null">
+        rent_type = #{rentType,jdbcType=VARCHAR} and 
+      </if>
+      <if test="fixedRent != null">
+        fixed_rent = #{fixedRent,jdbcType=VARCHAR} and 
+      </if>
+      <if test="fixedRentStandard != null">
+        fixed_rent_standard = #{fixedRentStandard,jdbcType=VARCHAR} and 
+      </if>
+      <if test="comRentStandard != null">
+        com_rent_standard = #{comRentStandard,jdbcType=VARCHAR} and 
+      </if>
+      <if test="propertyStandard != null">
+        property_standard = #{propertyStandard,jdbcType=VARCHAR} and 
+      </if>
+      <if test="property != null">
+        property = #{property,jdbcType=VARCHAR} and 
+      </if>
+      <if test="fixedProperty != null">
+        fixed_property = #{fixedProperty,jdbcType=VARCHAR} and 
+      </if>
+      <if test="otherChargeStd1 != null">
+        other_charge_std1 = #{otherChargeStd1,jdbcType=VARCHAR} and 
+      </if>
+      <if test="otherChargeStd2 != null">
+        other_charge_std2 = #{otherChargeStd2,jdbcType=VARCHAR} and 
+      </if>
+      <if test="otherChargeStd3 != null">
+        other_charge_std3 = #{otherChargeStd3,jdbcType=VARCHAR} and 
+      </if>
+      <if test="otherCharge1 != null">
+        other_charge1 = #{otherCharge1,jdbcType=VARCHAR} and 
+      </if>
+      <if test="otherCharge2 != null">
+        other_charge2 = #{otherCharge2,jdbcType=VARCHAR} and 
+      </if>
+      <if test="otherCharge3 != null">
+        other_charge3 = #{otherCharge3,jdbcType=VARCHAR} and 
+      </if>
+      <if test="otherFixedCharge1 != null">
+        other_fixed_charge1 = #{otherFixedCharge1,jdbcType=VARCHAR} and 
+      </if>
+      <if test="otherFixedCharge2 != null">
+        other_fixed_charge2 = #{otherFixedCharge2,jdbcType=VARCHAR} and 
+      </if>
+      <if test="otherFixedCharge3 != null">
+        other_fixed_charge3 = #{otherFixedCharge3,jdbcType=VARCHAR} and 
+      </if>
+      <if test="tableNum != null">
+        table_num = #{tableNum,jdbcType=INTEGER} and 
+      </if>
+      <if test="seatsNum != null">
+        seats_num = #{seatsNum,jdbcType=INTEGER} and 
+      </if>
+      <if test="operState != null">
+        oper_state = #{operState,jdbcType=VARCHAR} and 
+      </if>
+      <if test="operType != null">
+        oper_type = #{operType,jdbcType=VARCHAR} and 
+      </if>
+      <if test="leaseType != null">
+        lease_type = #{leaseType,jdbcType=VARCHAR} and 
+      </if>
+      <if test="startTime != null">
+        start_time = #{startTime,jdbcType=DATE} and 
+      </if>
+      <if test="closeTime != null">
+        close_time = #{closeTime,jdbcType=DATE} and 
+      </if>
+      <if test="creationDate != null">
+        creation_date = #{creationDate,jdbcType=TIMESTAMP} and 
+      </if>
+      <if test="createdBy != null">
+        created_by = #{createdBy,jdbcType=VARCHAR} and 
+      </if>
+      <if test="updateDate != null">
+        update_date = #{updateDate,jdbcType=TIMESTAMP} and 
+      </if>
+      <if test="updateBy != null">
+        update_by = #{updateBy,jdbcType=VARCHAR} and 
+      </if>
+      <if test="isAlive != null">
+        is_alive = #{isAlive,jdbcType=BIT} and 
+      </if>
+      <if test="brandName != null">
+        brand_name=#{brandName,jdbcType=VARCHAR} and
+      </if>
+      1=1
+    </where>
+  </select>
 </mapper>

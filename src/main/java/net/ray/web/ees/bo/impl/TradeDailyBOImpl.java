@@ -29,10 +29,12 @@ public class TradeDailyBOImpl implements TradeDailyBO {
 		Map<String,Object> map=new HashMap<String,Object>();
 		map.put("for_mall", isTrade);
 		List<TradeDailyAchievement> achievements=tradeDailyAchievementMapper.selectByYesterday(map);
-		Float salesAmount=tradeDailyAchievementMapper.countByYesterday();
-		for(TradeDailyAchievement achievement:achievements){
-			Float dailyAmount=achievement.getSalesAmount();
-			achievement.setSalesPercentage(dailyAmount.floatValue()/salesAmount.floatValue()*100);
+		Float salesAmount=tradeDailyAchievementMapper.countByYesterday(map);
+		if(!achievements.isEmpty()){
+			for(TradeDailyAchievement achievement:achievements){
+				Float dailyAmount=achievement.getSalesAmount();
+				achievement.setSalesPercentage(dailyAmount.floatValue()/salesAmount.floatValue()*100);
+			}
 		}
 		return achievements;
 	}

@@ -1,5 +1,7 @@
 package net.ray.web.ees.db.dao;
 
+import java.util.List;
+
 import net.ray.web.ees.db.eo.BrandInfro;
 
 public interface BrandInfroMapper {
@@ -50,4 +52,6 @@ public interface BrandInfroMapper {
      * @mbg.generated Thu Nov 24 17:04:55 CST 2016
      */
     int updateByPrimaryKey(BrandInfro record);
+    
+    List<BrandInfro> selectBySelective(BrandInfro record);
 }

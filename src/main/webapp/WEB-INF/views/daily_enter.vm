@@ -34,12 +34,12 @@
 								id="tab_content1" aria-labelledby="home-tab">
 								<div class="x_content">
 									<br />
-									<form id="demo-form2" data-parsley-validate
+									<form id="brandEnter" data-parsley-validate
 										class="form-horizontal form-label-left">
 
 										<div class="form-group">
 											<label class="control-label col-md-3 col-sm-3 col-xs-12"
-												for="first-name">日期 <span class="required">*</span>
+												for="birthday">日期 <span class="required">*</span>
 											</label>
 											<div class="col-md-2 col-sm-6 col-xs-12">
 												<input id="birthday"
@@ -49,76 +49,71 @@
 										</div>
 										<div class="form-group">
 											<label class="control-label col-md-3 col-sm-3 col-xs-12"
-												for="last-name">品牌名称 <span class="required">*</span>
+												for="brandName">品牌名称 <span class="required">*</span>
 											</label>
 											<div class="col-md-2 col-sm-6 col-xs-12">
-												<input type="text" id="last-name" name="last-name"
+												<input type="text" id="brandName" name="brandName"
 													required="required" class="form-control col-md-7 col-xs-12">
+												<input id="brandId" type="hidden" name="brandId" value=""/>
 											</div>
 											<p class="help-block">品牌名称或者铺位号输入一个即可</p>
 										</div>
 										<div class="form-group">
-											<label for="middle-name"
+											<label for="poi"
 												class="control-label col-md-3 col-sm-3 col-xs-12">铺位号</label>
 											<div class="col-md-2 col-sm-4 col-xs-10">
-												<input id="middle-name"
+												<input id="poi"
 													class="form-control col-md-7 col-xs-12" type="text"
-													name="middle-name" readonly="readonly">
+													name="poi" readonly="readonly">
 											</div>
 											<div class="col-md-3 col-sm-3 col-xs-3">
-												<button type="submit" class="btn btn-success">选择铺位号</button>
+												<button id="chooseBrand" type="button" class="btn btn-success">选择铺位号</button>
 											</div>
 										</div>
 										<div class="form-group">
 											<label class="control-label col-md-3 col-sm-3 col-xs-12"
-												for="last-name">单日销售额 <span class="required">*</span>
+												for="salesAmount">单日销售额 <span class="required">*</span>
 											</label>
 											<div class="col-md-2 col-sm-6 col-xs-12">
-												<input type="text" id="last-name" name="last-name"
+												<input type="text" id="salesAmount" name="salesAmount"
 													required="required" class="form-control col-md-7 col-xs-12">
 											</div>
 											<p class="help-block">单位：元</p>
 										</div>
 										<div class="form-group">
 											<label class="control-label col-md-3 col-sm-3 col-xs-12"
-												for="last-name">单日销售笔数 <span class="required">*</span>
+												for="salesVolume">单日销售笔数 
 											</label>
 											<div class="col-md-2 col-sm-6 col-xs-12">
-												<input type="text" id="last-name" name="last-name"
+												<input type="text" id="salesVolume" name="salesVolume"
 													required="required" class="form-control col-md-7 col-xs-12">
 											</div>
 											<p class="help-block">单位：笔</p>
 										</div>
 										<div class="form-group">
 											<label class="control-label col-md-3 col-sm-3 col-xs-12"
-												for="last-name">单日销售件数 <span class="required">*</span>
+												for="salesCount">单日销售件数 
 											</label>
 											<div class="col-md-2 col-sm-6 col-xs-12">
-												<input type="text" id="last-name" name="last-name"
+												<input type="text" id="salesCount" name="salesCount"
 													required="required" class="form-control col-md-7 col-xs-12">
 											</div>
 											<p class="help-block">单位：件</p>
 										</div>
 										<div class="form-group">
 											<label class="control-label col-md-3 col-sm-3 col-xs-12"
-												for="last-name">单日进店客流 <span class="required">*</span>
+												for="customerVolume">单日进店客流 
 											</label>
 											<div class="col-md-2 col-sm-6 col-xs-12">
-												<input type="text" id="last-name" name="last-name"
+												<input type="text" id="customerVolume" name="customerVolume"
 													required="required" class="form-control col-md-7 col-xs-12">
 											</div>
 											<p class="help-block">单位：人</p>
 										</div>
 										<br> <br>
 										<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-											<button type="submit" class="btn btn-primary  btn-lg"
-												onclick="new PNotify({
-                                  title: '录入成功',
-                                  text: '<p>品牌：东北风</p>',
-                                  type: 'success',
-                                  styling: 'bootstrap3'
-                              });">提交并录入</button>
-											<button type="submit" class="btn btn-success  btn-lg">重置</button>
+											<button id="brandSubmit" type="button" class="btn btn-primary  btn-lg">提交并录入</button>
+											<button type="reset" class="btn btn-success  btn-lg">重置</button>
 										</div>
 									</form>
 								</div>
@@ -127,7 +122,7 @@
 								aria-labelledby="profile-tab">
 								<div class="x_content">
 									<br />
-									<form id="demo-form3" data-parsley-validate
+									<form id="mallEnter" data-parsley-validate
 										class="form-horizontal form-label-left">
 										<div class="form-group">
 												<label
@@ -139,9 +134,9 @@
 														required="required" type="text">
 												</div>
 												<label
-													class="control-label col-md-1 col-sm-3 col-xs-12 left">天气</label>
+													class="control-label col-md-1 col-sm-3 col-xs-12 left">天气 <span class="required">*</span></label>
 												<div class="col-md-2 col-sm-3 col-xs-1">
-													<select class="form-control">
+													<select id="weather" class="form-control">
 														<option>请选择</option>
 														<option>晴朗</option>
 														<option>降雨</option>
@@ -152,60 +147,61 @@
 										</div>
 										<div class="form-group">
 											<label class="control-label col-md-3 col-sm-3 col-xs-12"
-												for="last-name">项目名称 <span class="required">*</span>
+												for="mallName">项目名称 <span class="required">*</span>
 											</label>
 											<div class="col-md-2 col-sm-6 col-xs-12">
-											<input id="middle-name"
+											<input id="mallName"
 													class="form-control col-md-7 col-xs-12" type="text"
-													name="middle-name" readonly="readonly" value="宁波万达广场">
+													name="mallName" readonly="readonly" value="$!{mall.proName}">
+													<input id="mallId" type="hidden" name="mallId" value="$!{mall.id}"/>
 											</div>
 										</div>
 										<div class="form-group">
-											<label for="middle-name"
-												class="control-label col-md-3 col-sm-3 col-xs-12">单日销售额</label>
+											<label for="salesAmount2"
+												class="control-label col-md-3 col-sm-3 col-xs-12">单日销售额 <span class="required">*</span></label>
 											<div class="col-md-2 col-sm-6 col-xs-12">
-												<input id="middle-name"
+												<input id="salesAmount2"
 													class="form-control col-md-7 col-xs-12" type="text"
-													name="middle-name">
+													name="salesAmount2">
 											</div>
 											<p class="help-block">单位：元</p>
 										</div>
 										<div class="form-group">
 											<label class="control-label col-md-3 col-sm-3 col-xs-12"
-												for="last-name">单日销售笔数 <span class="required">*</span>
+												for="salesVolume2">单日销售笔数 
 											</label>
 											<div class="col-md-2 col-sm-6 col-xs-12">
-												<input type="text" id="last-name" name="last-name"
+												<input type="text" id="salesVolume2" name="salesVolume2"
 													required="required" class="form-control col-md-7 col-xs-12">
 											</div>
 											<p class="help-block">单位：笔</p>
 										</div>
 										<div class="form-group">
 											<label class="control-label col-md-3 col-sm-3 col-xs-12"
-												for="last-name">单日销售件数 <span class="required">*</span>
+												for="salesCount2">单日销售件数 
 											</label>
 											<div class="col-md-2 col-sm-6 col-xs-12">
-												<input type="text" id="last-name" name="last-name"
+												<input type="text" id="salesCount2" name="salesCount2"
 													required="required" class="form-control col-md-7 col-xs-12">
 											</div>
 											<p class="help-block">单位：件</p>
 										</div>
 										<div class="form-group">
 											<label class="control-label col-md-3 col-sm-3 col-xs-12"
-												for="last-name">单日进店客流 <span class="required">*</span>
+												for="customerVolume2">单日项目客流 <span class="required">*</span>
 											</label>
 											<div class="col-md-2 col-sm-6 col-xs-12">
-												<input type="text" id="last-name" name="last-name"
+												<input type="text" id="customerVolume2" name="customerVolume2"
 													required="required" class="form-control col-md-7 col-xs-12">
 											</div>
 											<p class="help-block">单位：人</p>
 										</div>
 										<div class="form-group">
 											<label class="control-label col-md-3 col-sm-3 col-xs-12"
-												for="last-name">单日车流<span class="required">*</span>
+												for="carVolume">单日车流
 											</label>
 											<div class="col-md-2 col-sm-6 col-xs-12">
-												<input type="text" id="last-name" name="last-name"
+												<input type="text" id="carVolume" name="carVolume"
 													required="required" class="form-control col-md-7 col-xs-12">
 											</div>
 											<p class="help-block">单位：辆</p>
@@ -213,14 +209,9 @@
 										<br>
 										<br>
 										<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-											<button type="submit" class="btn btn-primary  btn-lg"
-												onclick="new PNotify({
-                                  title: '录入成功',
-                                  text: '<p>品牌：东北风</p>',
-                                  type: 'success',
-                                  styling: 'bootstrap3'
-                              });">提交并录入</button>
-											<button type="submit" class="btn btn-success  btn-lg">重置</button>
+											<button id="mallSubmit" type="button" class="btn btn-primary  btn-lg"
+												>提交并录入</button>
+											<button type="button" class="btn btn-success  btn-lg">重置</button>
 										</div>
 									</form>
 								</div>
@@ -233,12 +224,50 @@
 		</div>
 	</div>
 </div>
-
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+													&times;
+												</button>
+												<h4 class="modal-title" id="myModalLabel">
+													选择品牌
+												</h4>
+											</div>
+											<div class="modal-body">
+												<table class="table">
+													<thead>
+														<tr>
+															<th>#</th>
+															<th>品牌名</th>
+															<th>铺位号</th>
+															<th>楼层</th>
+															<th>选择</th>
+														</tr>
+													</thead>
+													<tbody id="datatable">
+													</tbody>
+												</table>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+												</button>
+											</div>
+										</div><!-- /.modal-content -->
+									</div><!-- /.modal -->
 <script src="${rc.contextPath}/static/vendors/moment/min/moment.min.js"></script>
 <script
 	src="${rc.contextPath}/static/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
 <!-- bootstrap-daterangepicker -->
 <script>
+		function cho(id,name,poi){
+			$("#brandId").val(id);
+			$("#brandName").val(name);
+			$("#poi").val(poi);
+			$('#myModal').modal('hide');
+		}
+		
 	$(document).ready(function() {
 		$('#birthday').daterangepicker({
 			singleDatePicker : true,
@@ -251,6 +280,102 @@
 			calender_style : "picker_4"
 		}, function(start, end, label) {
 			console.log(start.toISOString(), end.toISOString(), label);
+		});
+		
+		$("#chooseBrand").click(function(){
+			$.post("${rc.contextPath}/base_data/brand_data_List", 
+			 function(data, status) {
+				if(data!=null){
+					for(var i=0;i<data.length;i++){
+						var brand=data[i];
+						var row="<tr><td>"+(i+1)+"</td><td>"+brand.brandName+"</td><td>"+brand.poiNum+"</td><td>"+brand.floor+"</td><td><button onclick=\"cho('"+brand.id+"','"+brand.brandName+"','"+brand.poiNum+"')\">选择</button></td></tr>"
+						$('#datatable').append(row);
+					}
+					$('#myModal').modal('show');
+				}
+			});
+			
+		});
+		
+		
+		$("#brandSubmit").click(function(){
+			var salesDate=$("#birthday").val();
+			var brandName=$("#brandName").val();
+			var salesofamount=$("#salesAmount").val();
+			var salesVolume=$("#salesVolume").val();
+			var salesTimes=$("#salesCount").val();
+			var customerVolume=$("#customerVolume").val();
+			var brandId=$("#brandId").val();
+			var poiNum=$("#brandId").val();
+			$.post("${rc.contextPath}/data_enter/daily_data_enter_brand", {
+				salesDate : salesDate,
+				salesofamount : salesofamount,
+				salesVolume : salesVolume,
+				salesTimes : salesTimes,
+				customerVolume : customerVolume,
+				brandId:brandId,
+				poiNum:poiNum,
+				brandName : brandName
+			}, function(data, status) {
+				if(data){
+					new PNotify({
+	                  title: '录入成功',
+	                  text: '<p>品牌：'+brandName+'</p>',
+	                  type: 'success',
+	                  styling: 'bootstrap3'
+	              });
+				}else{
+				new PNotify({
+	                  title: '录入失败',
+	                  text: '<p>品牌：'+brandName+'</p>',
+	                  type: 'error',
+	                  styling: 'bootstrap3'
+	              });
+				}
+				
+				document.getElementById("brandEnter").reset();
+			});
+		});
+		
+		
+		$("#mallSubmit").click(function(){
+			var salesDate=$("#birthday2").val();
+			var mallName=$("#mallName").val();
+			var salesofamount=$("#salesAmount2").val();
+			var salesVolume=$("#salesVolume2").val();
+			var salesTimes=$("#salesCount2").val();
+			var customerVolume=$("#customerVolume2").val();
+			var carVolume=$("#carVolume").val();
+			var weather=$("#weather").val();
+			var mallId=$("#mallId").val();
+			$.post("${rc.contextPath}/data_enter/daily_data_enter_mall", {
+				salesDate : salesDate,
+				salesofamount : salesofamount,
+				salesVolume : salesVolume,
+				salesTimes : salesTimes,
+				customerVolume : customerVolume,
+				carVolume : carVolume,
+				mallId : mallId,
+				weather : weather
+			}, function(data, status) {
+				if(data){
+					new PNotify({
+	                  title: '录入成功',
+	                  text: '<p>项目：'+mallName+'</p>',
+	                  type: 'success',
+	                  styling: 'bootstrap3'
+	              });
+				}else{
+				new PNotify({
+	                  title: '录入失败',
+	                  text: '<p>项目：'+mallName+'</p>',
+	                  type: 'error',
+	                  styling: 'bootstrap3'
+	              });
+				}
+				
+				document.getElementById("mallEnter").reset();
+			});
 		});
 	});
 </script>

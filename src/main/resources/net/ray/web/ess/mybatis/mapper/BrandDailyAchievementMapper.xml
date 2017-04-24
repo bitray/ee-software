@@ -20,7 +20,8 @@
     <result column="dayofweek" jdbcType="VARCHAR" property="dayofweek" />
     <result column="week_num" jdbcType="INTEGER" property="weekNum" />
     <result column="weather" jdbcType="VARCHAR" property="weather" />
-    <result column="customer_volumn" jdbcType="INTEGER" property="customerVolumn" />
+    <result column="customer_volume" jdbcType="INTEGER" property="customerVolume" />
+    <result column="car_volume" jdbcType="INTEGER" property="carVolume" />
     <result column="creation_date" jdbcType="TIMESTAMP" property="creationDate" />
     <result column="created_by" jdbcType="VARCHAR" property="createdBy" />
     <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
@@ -68,7 +69,7 @@
       This element was generated on Thu Nov 24 17:04:55 CST 2016.
     -->
     id, brand_id, mall_id, sales_date, salesofamount, sales_volume, sales_times, is_holiday, 
-    holiday_id, date_type, dayofweek, week_num, weather, customer_volumn, creation_date, 
+    holiday_id, date_type, dayofweek, week_num, weather, customer_volume, car_volume,creation_date, 
     created_by, update_date, update_by, is_alive
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
@@ -101,14 +102,14 @@
       sales_date, salesofamount, sales_volume, 
       sales_times, is_holiday, holiday_id, 
       date_type, dayofweek, week_num, 
-      weather, customer_volumn, creation_date, 
+      weather, customer_volume, car_volume,creation_date, 
       created_by, update_date, update_by, 
       is_alive)
     values (#{id,jdbcType=INTEGER}, #{brandId,jdbcType=INTEGER}, #{mallId,jdbcType=INTEGER}, 
       #{salesDate,jdbcType=TIMESTAMP}, #{salesofamount,jdbcType=REAL}, #{salesVolume,jdbcType=REAL}, 
       #{salesTimes,jdbcType=INTEGER}, #{isHoliday,jdbcType=BIT}, #{holidayId,jdbcType=VARCHAR}, 
       #{dateType,jdbcType=VARCHAR}, #{dayofweek,jdbcType=VARCHAR}, #{weekNum,jdbcType=INTEGER}, 
-      #{weather,jdbcType=VARCHAR}, #{customerVolumn,jdbcType=INTEGER}, #{creationDate,jdbcType=TIMESTAMP}, 
+      #{weather,jdbcType=VARCHAR}, #{customerVolume,jdbcType=INTEGER},#{carVolume,jdbcType=INTEGER}, #{creationDate,jdbcType=TIMESTAMP}, 
       #{createdBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, 
       #{isAlive,jdbcType=BIT})
   </insert>
@@ -159,8 +160,11 @@
       <if test="weather != null">
         weather,
       </if>
-      <if test="customerVolumn != null">
-        customer_volumn,
+      <if test="customerVolume != null">
+        customer_volume,
+      </if>
+      <if test="carVolume != null">
+        car_volume,
       </if>
       <if test="creationDate != null">
         creation_date,
@@ -218,8 +222,11 @@
       <if test="weather != null">
         #{weather,jdbcType=VARCHAR},
       </if>
-      <if test="customerVolumn != null">
-        #{customerVolumn,jdbcType=INTEGER},
+      <if test="customerVolume != null">
+        #{customerVolume,jdbcType=INTEGER},
+      </if>
+      <if test="carVolume != null">
+        #{carVolume,jdbcType=INTEGER},
       </if>
       <if test="creationDate != null">
         #{creationDate,jdbcType=TIMESTAMP},
@@ -293,8 +300,11 @@
       <if test="weather != null">
         weather = #{weather,jdbcType=VARCHAR},
       </if>
-      <if test="customerVolumn != null">
-        customer_volumn = #{customerVolumn,jdbcType=INTEGER},
+      <if test="customerVolume != null">
+        customer_volume = #{customerVolume,jdbcType=INTEGER},
+      </if>
+      <if test="carVolume != null">
+        car_volume = #{carVolume,jdbcType=INTEGER},
       </if>
       <if test="creationDate != null">
         creation_date = #{creationDate,jdbcType=TIMESTAMP},
@@ -333,7 +343,8 @@
       dayofweek = #{dayofweek,jdbcType=VARCHAR},
       week_num = #{weekNum,jdbcType=INTEGER},
       weather = #{weather,jdbcType=VARCHAR},
-      customer_volumn = #{customerVolumn,jdbcType=INTEGER},
+      customer_volume = #{customerVolume,jdbcType=INTEGER},
+      car_volume = #{carVolume,jdbcType=INTEGER},
       creation_date = #{creationDate,jdbcType=TIMESTAMP},
       created_by = #{createdBy,jdbcType=VARCHAR},
       update_date = #{updateDate,jdbcType=TIMESTAMP},
@@ -341,4 +352,70 @@
       is_alive = #{isAlive,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+  <select id="selectBySelective" parameterType="net.ray.web.ees.db.eo.BrandDailyAchievement" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from e_brand_daily_achievement
+   	<where>
+   	
+   	  <if test="brandId != null">
+        and brand_id = #{brandId,jdbcType=INTEGER}
+      </if>
+      <if test="mallId != null">
+        and mall_id = #{mallId,jdbcType=INTEGER}
+      </if>
+      <if test="salesDate != null">
+        and sales_date = #{salesDate,jdbcType=TIMESTAMP}
+      </if>
+      <if test="salesofamount != null">
+        and salesofamount = #{salesofamount,jdbcType=REAL}
+      </if>
+      <if test="salesVolume != null">
+        and sales_volume = #{salesVolume,jdbcType=REAL}
+      </if>
+      <if test="salesTimes != null">
+        and sales_times = #{salesTimes,jdbcType=INTEGER}
+      </if>
+      <if test="isHoliday != null">
+        and is_holiday = #{isHoliday,jdbcType=BIT}
+      </if>
+      <if test="holidayId != null">
+        and holiday_id = #{holidayId,jdbcType=VARCHAR}
+      </if>
+      <if test="dateType != null">
+        and date_type = #{dateType,jdbcType=VARCHAR}
+      </if>
+      <if test="dayofweek != null">
+        and dayofweek = #{dayofweek,jdbcType=VARCHAR}
+      </if>
+      <if test="weekNum != null">
+        and week_num = #{weekNum,jdbcType=INTEGER}
+      </if>
+      <if test="weather != null">
+        and weather = #{weather,jdbcType=VARCHAR}
+      </if>
+      <if test="customerVolume != null">
+        and customer_volume = #{customerVolume,jdbcType=INTEGER}
+      </if>
+      <if test="carVolume != null">
+        and car_volume = #{carVolume,jdbcType=INTEGER}
+      </if>
+      <if test="creationDate != null">
+        and creation_date = #{creationDate,jdbcType=TIMESTAMP}
+      </if>
+      <if test="createdBy != null">
+        and created_by = #{createdBy,jdbcType=VARCHAR}
+      </if>
+      <if test="updateDate != null">
+        and update_date = #{updateDate,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateBy != null">
+        and update_by = #{updateBy,jdbcType=VARCHAR}
+      </if>
+      <if test="isAlive != null">
+        and is_alive = #{isAlive,jdbcType=BIT}
+      </if>
+   	</where>
+  </select>
 </mapper>

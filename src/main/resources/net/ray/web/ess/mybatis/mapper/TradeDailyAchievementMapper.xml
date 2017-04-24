@@ -333,11 +333,18 @@
     order by sales_amount desc
   </select>
   
-  <select id="countByYesterday" resultType="java.lang.Float">
+  <select id="countByYesterday" parameterType="Map" resultType="java.lang.Float">
     select 
    		sum(sales_amount)
     from e_trade_daily_achievement tda,e_trade_type tt
-    where tda.trade_id=tt.id and TO_DAYS( now() ) - TO_DAYS(tda.sales_date) = 1 and tda.is_alive =1 and trade_id!=11
+    where tda.trade_id=tt.id and TO_DAYS( now() ) - TO_DAYS(tda.sales_date) = 1 and tda.is_alive =1 
+    and 
+    <if test="for_mall==true">
+    	trade_id=11 
+    </if>
+    <if test="for_mall!=true">
+    	trade_id!=11 
+    </if>
   </select>
   
   <select id="selectByDurationAndTrade" parameterType="Map" resultMap="BaseResultMap">

@@ -57,7 +57,7 @@ public interface TradeDailyAchievementMapper {
     
     List<TradeDailyAchievement> selectByDate(Date date);
     List<TradeDailyAchievement> selectByYesterday(Map<String,Object> map);
-    Float countByYesterday();
+    Float countByYesterday(Map<String,Object> map);
     List<TradeDailyAchievement> selectByDurationAndTrade(Map<String,Object> map);
     Float countByDurationAndTrade(Map<String,Object> map);
 }

@@ -11,8 +11,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import net.ray.web.ees.bo.BrandInfoBO;
 import net.ray.web.ees.bo.FloorBO;
 import net.ray.web.ees.bo.PersonBO;
+import net.ray.web.ees.db.eo.BrandInfro;
 import net.ray.web.ees.db.eo.Floors;
 import net.ray.web.ees.db.eo.Person;
 
@@ -24,6 +26,8 @@ public class BaseDataController {
 	private FloorBO floorBO;
 	@Resource(name="personBO")
 	public PersonBO personBO;
+	@Resource
+	public BrandInfoBO brandBO;
 	
 	@RequestMapping("/project_data_init")
 	public String projectDataInit(){
@@ -34,6 +38,15 @@ public class BaseDataController {
 	@RequestMapping("/brand_data_init")
 	public String brandDataInit(){
 		return "brand_data";
+	}
+	
+	@RequestMapping("/brand_data_List")
+	@ResponseBody
+	public List<BrandInfro> brandDataList(){
+		BrandInfro para=new BrandInfro();
+		para.setIsAlive(true);
+		List<BrandInfro> brands=brandBO.getBrandsBySelective(para);
+		return brands;
 	}
 	
 	@RequestMapping("/floor_data_init")
