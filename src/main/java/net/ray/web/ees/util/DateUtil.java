@@ -42,6 +42,13 @@ public class DateUtil {
 		return yearStr;
 	}
 	
+	public static String getCurrentMonth(){
+		Date date=new Date();
+		DateFormat dateFormat=new SimpleDateFormat("MM");
+		String month=dateFormat.format(date);
+		return month;
+	}
+	
 	public static void main(String[] args) {
 		Date[] duration=DateUtil.getCurrentWeek();
 		System.out.println(duration[0]);

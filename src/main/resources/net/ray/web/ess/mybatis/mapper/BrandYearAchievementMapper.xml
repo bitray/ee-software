@@ -28,6 +28,9 @@
     <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
     <result column="updated_by" jdbcType="VARCHAR" property="updatedBy" />
     <result column="is_alive" jdbcType="BIT" property="isAlive" />
+    <result column="weather" jdbcType="VARCHAR" property="weather" />
+    <result column="customer_volume" jdbcType="INTEGER" property="customerVolume" />
+    <result column="car_volume" jdbcType="INTEGER" property="carVolume" />
   </resultMap>
   <sql id="Base_Column_List">
     <!--
@@ -38,7 +41,7 @@
     id, brand_id, mall_id, sale_year, sales_amount, sales_volume, sales_times, y_rent, 
     y_property, y_other_charge1, y_other_charge2, y_other_charge3, y_fixed_charge1, y_fixed_charge2, 
     y_fixed_charge3, update_dates, creation_date, created_by, update_date, updated_by, 
-    is_alive
+    is_alive,weather,customer_volume,car_volume
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     <!--
@@ -72,7 +75,7 @@
       y_other_charge1, y_other_charge2, y_other_charge3, 
       y_fixed_charge1, y_fixed_charge2, y_fixed_charge3, 
       update_dates, creation_date, created_by, 
-      update_date, updated_by, is_alive
+      update_date, updated_by, is_alive,customer_volume,car_volume,weather
       )
     values (#{id,jdbcType=INTEGER}, #{brandId,jdbcType=INTEGER}, #{mallId,jdbcType=INTEGER}, 
       #{saleYear,jdbcType=VARCHAR}, #{salesAmount,jdbcType=REAL}, #{salesVolume,jdbcType=INTEGER}, 
@@ -80,7 +83,8 @@
       #{yOtherCharge1,jdbcType=REAL}, #{yOtherCharge2,jdbcType=REAL}, #{yOtherCharge3,jdbcType=REAL}, 
       #{yFixedCharge1,jdbcType=REAL}, #{yFixedCharge2,jdbcType=REAL}, #{yFixedCharge3,jdbcType=REAL}, 
       #{updateDates,jdbcType=TIMESTAMP}, #{creationDate,jdbcType=TIMESTAMP}, #{createdBy,jdbcType=VARCHAR}, 
-      #{updateDate,jdbcType=TIMESTAMP}, #{updatedBy,jdbcType=VARCHAR}, #{isAlive,jdbcType=BIT}
+      #{updateDate,jdbcType=TIMESTAMP}, #{updatedBy,jdbcType=VARCHAR}, #{isAlive,jdbcType=BIT},#{customerVolume,jdbcType=INTEGER}, 
+      #{carVolume,jdbcType=INTEGER},#{weather,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="net.ray.web.ees.db.eo.BrandYearAchievement">
@@ -154,6 +158,15 @@
       <if test="isAlive != null">
         is_alive,
       </if>
+      <if test="customerVolume != null">
+        customer_volume,
+      </if>
+      <if test="carVolume != null">
+        car_volume,
+      </if>
+      <if test="weather != null">
+        weather,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -218,6 +231,15 @@
       </if>
       <if test="isAlive != null">
         #{isAlive,jdbcType=BIT},
+      </if>
+      <if test="customerVolume != null">
+        #{customerVolume,jdbcType=VARCHAR},
+      </if>
+      <if test="carVolume != null">
+        #{carVolume,jdbcType=INTEGER},
+      </if>
+      <if test="weather != null">
+        #{weather,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -289,6 +311,15 @@
       <if test="isAlive != null">
         is_alive = #{isAlive,jdbcType=BIT},
       </if>
+      <if test="customerVolume != null">
+        customer_volume = #{customerVolume,jdbcType=VARCHAR},
+      </if>
+      <if test="carVolume != null">
+        car_volume = #{carVolume,jdbcType=INTEGER},
+      </if>
+      <if test="weather != null">
+        weather = #{weather,jdbcType=INTEGER},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -318,6 +349,9 @@
       created_by = #{createdBy,jdbcType=VARCHAR},
       update_date = #{updateDate,jdbcType=TIMESTAMP},
       updated_by = #{updatedBy,jdbcType=VARCHAR},
+      customer_volume = #{customerVolume,jdbcType=VARCHAR},
+      car_volume = #{carVolume,jdbcType=INTEGER},
+      weather = #{weather,jdbcType=INTEGER},
       is_alive = #{isAlive,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>

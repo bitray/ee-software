@@ -286,10 +286,13 @@
 			$.post("${rc.contextPath}/base_data/brand_data_List", 
 			 function(data, status) {
 				if(data!=null){
-					for(var i=0;i<data.length;i++){
-						var brand=data[i];
-						var row="<tr><td>"+(i+1)+"</td><td>"+brand.brandName+"</td><td>"+brand.poiNum+"</td><td>"+brand.floor+"</td><td><button onclick=\"cho('"+brand.id+"','"+brand.brandName+"','"+brand.poiNum+"')\">选择</button></td></tr>"
-						$('#datatable').append(row);
+					var rows=$("#datatable").find("tr").length;
+					if(rows==0){
+						for(var i=0;i<data.length;i++){
+							var brand=data[i];
+							var row="<tr><td>"+(i+1)+"</td><td>"+brand.brandName+"</td><td>"+brand.poiNum+"</td><td>"+brand.floor+"</td><td><button onclick=\"cho('"+brand.id+"','"+brand.brandName+"','"+brand.poiNum+"')\">选择</button></td></tr>"
+							$('#datatable').append(row);
+						}
 					}
 					$('#myModal').modal('show');
 				}

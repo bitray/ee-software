@@ -71,7 +71,8 @@
 		<mapper resource="net/ray/web/ess/mybatis/mapper/TradeYearAchievementMapper.xml" />
 		<mapper resource="net/ray/web/ess/mybatis/mapper/BrandDailyAchievementMapper.xml" />
 		<mapper resource="net/ray/web/ess/mybatis/mapper/BrandInfroMapper.xml" />
-
+		<mapper resource="net/ray/web/ess/mybatis/mapper/BrandMonthlyAchievementMapper.xml" />
+		<mapper resource="net/ray/web/ess/mybatis/mapper/BrandYearAchievementMapper.xml" />
 		
 <!-- 		<mapper resource="net.ray.web.ess.db.mapper.authority.xml" /> -->
 <!-- 		<mapper resource="net.ray.web.ess.db.mapper.menu.xml" /> -->
