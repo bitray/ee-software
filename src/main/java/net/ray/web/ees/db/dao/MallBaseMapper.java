@@ -1,5 +1,7 @@
 package net.ray.web.ees.db.dao;
 
+import java.util.List;
+
 import net.ray.web.ees.db.eo.MallBase;
 
 public interface MallBaseMapper {
@@ -50,4 +52,6 @@ public interface MallBaseMapper {
      * @mbg.generated Thu Nov 24 17:04:55 CST 2016
      */
     int updateByPrimaryKey(MallBase record);
+    
+    public List<MallBase> selectBySelective(MallBase record);
 }

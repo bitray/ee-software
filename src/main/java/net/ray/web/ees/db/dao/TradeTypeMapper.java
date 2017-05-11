@@ -1,5 +1,7 @@
 package net.ray.web.ees.db.dao;
 
+import java.util.List;
+
 import net.ray.web.ees.db.eo.TradeType;
 
 public interface TradeTypeMapper {
@@ -50,4 +52,6 @@ public interface TradeTypeMapper {
      * @mbg.generated Thu Nov 24 17:04:55 CST 2016
      */
     int updateByPrimaryKey(TradeType record);
+    
+    public List<TradeType> selectBySelective(TradeType para);
 }

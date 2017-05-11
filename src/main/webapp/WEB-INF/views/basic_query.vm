@@ -46,62 +46,28 @@
 										<thead>
 											<tr>
 												<th>序号</th>
-												<th>楼层</th>
-												<th>铺位号</th>
-												<th>品牌名称</th>
+												<th>项目名称</th>
 												<th>面积</th>
 												<th>业态</th>
 												<th>一级业态</th>
 												<th>二级业态</th>
 												<th>开业日期</th>
 												<th>租金类型</th>
-												<th>经营状态</th>
-												<th>经营类型</th>
 											</tr>
 										</thead>
 										<tbody>
+										#foreach( $mall in $malls)
 											<tr>
-												<th scope="row">1</th>
-												<td>Mark</td>
-												<td>Otto</td>
-												<td>@mdo</td>
-												<td>@mdo</td>
-												<td>@mdo</td>
-												<td>@mdo</td>
-												<td>@mdo</td>
-												<td>@mdo</td>
-												<td>@mdo</td>
-												<td>@mdo</td>
-												<td>@mdo</td>
+												<th scope="row">$!{velocityCount}</th>
+												<td>$mall.proName</td>
+												<td>$mall.proArea</td>
+												<td>$mall.brandClassNumber</td>
+												<td>$mall.brandType1Num</td>
+												<td>$mall.brandType2Num</td>
+												<td>$mall.proOpenDate</td>
+												<td>$mall.proRentArea</td>
 											</tr>
-											<tr>
-												<th scope="row">2</th>
-												<td>Jacob</td>
-												<td>Thornton</td>
-												<td>@fat</td>
-												<td>@mdo</td>
-												<td>@mdo</td>
-												<td>@mdo</td>
-												<td>@mdo</td>
-												<td>@mdo</td>
-												<td>@mdo</td>
-												<td>@mdo</td>
-												<td>@mdo</td>
-											</tr>
-											<tr>
-												<th scope="row">3</th>
-												<td>Larry</td>
-												<td>the Bird</td>
-												<td>@twitter</td>
-												<td>@mdo</td>
-												<td>@mdo</td>
-												<td>@mdo</td>
-												<td>@mdo</td>
-												<td>@mdo</td>
-												<td>@mdo</td>
-												<td>@mdo</td>
-												<td>@mdo</td>
-											</tr>
+										#end
 										</tbody>
 									</table>
 
@@ -113,31 +79,17 @@
 										class="table table-striped table-bordered">
 										<thead>
 											<tr>
-												<th>序号</th>
+												<th>#</th>
 												<th>楼层名</th>
-												<th>楼层英</th>
-												<th>楼层定</th>
 											</tr>
 										</thead>
 										<tbody>
+											#foreach( $elem in $floors)
 											<tr>
-												<th scope="row">1</th>
-												<td>Mark</td>
-												<td>Otto</td>
-												<td>@mdo</td>
+												<th scope="row">$!{velocityCount}</th>
+												<td>$elem.floorNumber</td>
 											</tr>
-											<tr>
-												<th scope="row">2</th>
-												<td>Jacob</td>
-												<td>Thornton</td>
-												<td>@fat</td>
-											</tr>
-											<tr>
-												<th scope="row">3</th>
-												<td>Larry</td>
-												<td>the Bird</td>
-												<td>@twitter</td>
-											</tr>
+											#end
 										</tbody>
 									</table>
 
@@ -155,18 +107,12 @@
 												</tr>
 											</thead>
 											<tbody>
+											#foreach( $elem in $rootTades)
 												<tr>
-													<th scope="row">1</th>
-													<td>Mark</td>
+													<th scope="row">$!{velocityCount}</th>
+													<td>$elem.tradeName</td>
 												</tr>
-												<tr>
-													<th scope="row">2</th>
-													<td>Jacob</td>
-												</tr>
-												<tr>
-													<th scope="row">3</th>
-													<td>Larry</td>
-												</tr>
+											#end
 											</tbody>
 										</table>
 									</div>
@@ -181,21 +127,13 @@
 												</tr>
 											</thead>
 											<tbody>
+												<#foreach( $elem in $leve1Trades)
 												<tr>
-													<th scope="row">1</th>
-													<td>Mark</td>
-													<td>Otto</td>
+													<th scope="row">$!{velocityCount}</th>
+													<td>$elem.tradeName</td>
+													<td>$elem.parentId</td>
 												</tr>
-												<tr>
-													<th scope="row">2</th>
-													<td>Jacob</td>
-													<td>Thornton</td>
-												</tr>
-												<tr>
-													<th scope="row">3</th>
-													<td>Larry</td>
-													<td>the Bird</td>
-												</tr>
+												#end
 											</tbody>
 										</table>
 									</div>
@@ -210,21 +148,13 @@
 												</tr>
 											</thead>
 											<tbody>
+												<#foreach( $elem in $leve2Trades)
 												<tr>
-													<th scope="row">1</th>
-													<td>Mark</td>
-													<td>Otto</td>
+													<th scope="row">$!{velocityCount}</th>
+													<td>$elem.tradeName</td>
+													<td>$elem.parentId</td>
 												</tr>
-												<tr>
-													<th scope="row">2</th>
-													<td>Jacob</td>
-													<td>Thornton</td>
-												</tr>
-												<tr>
-													<th scope="row">3</th>
-													<td>Larry</td>
-													<td>the Bird</td>
-												</tr>
+												#end
 											</tbody>
 										</table>
 									</div>

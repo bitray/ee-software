@@ -97,11 +97,6 @@ public class BaseDataController {
 		return "trade_data";
 	}
 	
-	@RequestMapping("/basic_query_init")
-	public String basicQueryInit(){
-		return "basic_query";
-	}
-	
 	@RequestMapping("/user_data_init")
 	public String userDataInit(HttpServletRequest request){
 		List<Person> users=personBO.getUsers();

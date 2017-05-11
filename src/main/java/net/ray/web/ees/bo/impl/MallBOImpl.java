@@ -1,5 +1,7 @@
 package net.ray.web.ees.bo.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -15,6 +17,10 @@ public class MallBOImpl implements MallBO {
 	@Override
 	public MallBase getMallById(Integer id) {
 		return mallBaseMapper.selectByPrimaryKey(id);
+	}
+	@Override
+	public List<MallBase> getMalls(MallBase mallBase) {
+		return mallBaseMapper.selectBySelective(mallBase);
 	}
 
 }

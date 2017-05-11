@@ -88,7 +88,7 @@
 										class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
 										<li><a
-													href="${rc.contextPath}/base_data/basic_query_init">基础数据查询</a>
+													href="${rc.contextPath}/data_query/basic_query_init">基础数据查询</a>
 												</li>
 												<li><a
 													href="${rc.contextPath}/data_query/single_brand_query_init">单品牌查询</a>
