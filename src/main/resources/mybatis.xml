@@ -28,7 +28,7 @@
 		<!-- 配置默认的执行器。SIMPLE执行器没有什么特别之处。REUSE执行器重用预处理语句。BATCH执行器重用语句和批量更新 -->
 		<setting name="defaultExecutorType" value="SIMPLE" />
 		<setting name="mapUnderscoreToCamelCase" value="true" />
-		<setting name="logImpl" value="STDOUT_LOGGING"/>
+		<!--<setting name="logImpl" value="STDOUT_LOGGING"/>-->
 		
 	</settings>
 	<typeAliases>
@@ -70,10 +70,12 @@
 		<mapper resource="net/ray/web/ess/mybatis/mapper/TradeMonthlyAchievementMapper.xml" />
 		<mapper resource="net/ray/web/ess/mybatis/mapper/TradeYearAchievementMapper.xml" />
 		<mapper resource="net/ray/web/ess/mybatis/mapper/BrandDailyAchievementMapper.xml" />
-		<mapper resource="net/ray/web/ess/mybatis/mapper/BrandInfroMapper.xml" />
+		<mapper resource="net/ray/web/ess/mybatis/mapper/BrandInfoMapper.xml" />
 		<mapper resource="net/ray/web/ess/mybatis/mapper/BrandMonthlyAchievementMapper.xml" />
 		<mapper resource="net/ray/web/ess/mybatis/mapper/BrandYearAchievementMapper.xml" />
-		
+		<mapper resource="net/ray/web/ess/mybatis/mapper/TradeTypeMapper.xml" />
+                <!--<mapper resource="net/ray/web/ess/mybatis/mapper/RentTypeMapper.xml" />-->
+                
 <!-- 		<mapper resource="net.ray.web.ess.db.mapper.authority.xml" /> -->
 <!-- 		<mapper resource="net.ray.web.ess.db.mapper.menu.xml" /> -->
 	</mappers>

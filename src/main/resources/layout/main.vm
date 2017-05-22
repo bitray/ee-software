@@ -156,7 +156,7 @@
 							<a id="menu_toggle"><i class="fa fa-bars"></i></a>
 						</div>
 						<ul class="nav navbar-nav navbar-left">
-						<li><a id="menu_toggle">当前时间：$!dateTool.format('yyyy-MM-dd HH:mm:ss ',$!{currentDate})</a></li>
+						<li><a id="menu_toggle">当前时间：$!dateTool.format('yyyy-MM-dd HH:mm:ss ',$!dateTool.date)</a></li>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
 							<li class=""><a href="javascript:;"
