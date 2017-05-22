@@ -15,7 +15,7 @@ import net.ray.web.ees.bo.BrandMonthlyBO;
 import net.ray.web.ees.bo.BrandYearlyBO;
 import net.ray.web.ees.bo.MallBO;
 import net.ray.web.ees.db.eo.BrandDailyAchievement;
-import net.ray.web.ees.db.eo.BrandInfo;
+import net.ray.web.ees.db.eo.BrandInfro;
 import net.ray.web.ees.db.eo.BrandMonthlyAchievement;
 import net.ray.web.ees.db.eo.BrandYearAchievement;
 import net.ray.web.ees.db.eo.MallBase;
@@ -51,9 +51,9 @@ public class DataEnterController {
 
 	@RequestMapping("/brandDailyValidate")
 	@ResponseBody
-	public BrandDailyAchievement validateBrandDailyData(BrandDailyAchievement brandAchievement, BrandInfo brandPara) {
-		List<BrandInfo> brands = brandInfoBO.getBrandsBySelective(brandPara);
-		BrandInfo brand = brands.get(0);
+	public BrandDailyAchievement validateBrandDailyData(BrandDailyAchievement brandAchievement, BrandInfro brandPara) {
+		List<BrandInfro> brands = brandInfoBO.getBrandsBySelective(brandPara);
+		BrandInfro brand = brands.get(0);
 		BrandDailyAchievement result = null;
 		if (brand != null) {
 			BrandDailyAchievement params = new BrandDailyAchievement();
@@ -66,13 +66,13 @@ public class DataEnterController {
 
 	@RequestMapping("/daily_data_enter_brand")
 	@ResponseBody
-	public String brandDailyEnter(BrandDailyAchievement brandAchievement, BrandInfo brandPara,
+	public String brandDailyEnter(BrandDailyAchievement brandAchievement, BrandInfro brandPara,
 			HttpServletRequest request) {
 		Integer brandId=brandAchievement.getBrandId();
 		boolean result = false;
 		if(brandId==null){
-			List<BrandInfo> brands = brandInfoBO.getBrandsBySelective(brandPara);
-			BrandInfo brand = brands.get(0);
+			List<BrandInfro> brands = brandInfoBO.getBrandsBySelective(brandPara);
+			BrandInfro brand = brands.get(0);
 			if (brand != null) {
 				brandAchievement.setBrandId(brand.getId());
 				Person currentUser = CookieUtil.getCurrentUser(request);
@@ -91,7 +91,7 @@ public class DataEnterController {
 
 	@RequestMapping("/daily_data_enter_mall")
 	@ResponseBody
-	public String brandDailyMall(BrandDailyAchievement brandAchievement, BrandInfo brandPara,
+	public String brandDailyMall(BrandDailyAchievement brandAchievement, BrandInfro brandPara,
 			HttpServletRequest request) {
 		boolean result = false;
 		Person currentUser = CookieUtil.getCurrentUser(request);
@@ -111,12 +111,12 @@ public class DataEnterController {
 	}
 	@RequestMapping("/monthly_data_enter_save")
 	@ResponseBody
-	public String monthlyEnterSave(BrandMonthlyAchievement brandMonthlyAchievement,BrandInfo brandPara,HttpServletRequest request) {
+	public String monthlyEnterSave(BrandMonthlyAchievement brandMonthlyAchievement,BrandInfro brandPara,HttpServletRequest request) {
 		Integer brandId=brandMonthlyAchievement.getBrandId();
 		boolean result = false;
 		if(brandId==null){
-			List<BrandInfo> brands = brandInfoBO.getBrandsBySelective(brandPara);
-			BrandInfo brand = brands.get(0);
+			List<BrandInfro> brands = brandInfoBO.getBrandsBySelective(brandPara);
+			BrandInfro brand = brands.get(0);
 			if (brand != null) {
 				brandMonthlyAchievement.setBrandId(brand.getId());
 				Person currentUser = CookieUtil.getCurrentUser(request);
@@ -135,7 +135,7 @@ public class DataEnterController {
 	
 	@RequestMapping("/monthly_data_enter_mall")
 	@ResponseBody
-	public String mallMonthlyMall(BrandMonthlyAchievement brandMonthlyAchievement,BrandInfo brandPara,HttpServletRequest request) {
+	public String mallMonthlyMall(BrandMonthlyAchievement brandMonthlyAchievement,BrandInfro brandPara,HttpServletRequest request) {
 		boolean result = false;
 		Person currentUser = CookieUtil.getCurrentUser(request);
 		brandMonthlyAchievement.setCreatedBy(currentUser.getPersonName());
@@ -157,12 +157,12 @@ public class DataEnterController {
 
 	@RequestMapping("/yearly_data_enter_save")
 	@ResponseBody
-	public String monthlyEnterSave(BrandYearAchievement brandYearAchievement,BrandInfo brandPara,HttpServletRequest request) {
+	public String monthlyEnterSave(BrandYearAchievement brandYearAchievement,BrandInfro brandPara,HttpServletRequest request) {
 		Integer brandId=brandYearAchievement.getBrandId();
 		boolean result = false;
 		if(brandId==null){
-			List<BrandInfo> brands = brandInfoBO.getBrandsBySelective(brandPara);
-			BrandInfo brand = brands.get(0);
+			List<BrandInfro> brands = brandInfoBO.getBrandsBySelective(brandPara);
+			BrandInfro brand = brands.get(0);
 			if (brand != null) {
 				brandYearAchievement.setBrandId(brand.getId());
 				Person currentUser = CookieUtil.getCurrentUser(request);
@@ -181,7 +181,7 @@ public class DataEnterController {
 	
 	@RequestMapping("/yearly_data_enter_mall")
 	@ResponseBody
-	public String mallYearlySave(BrandYearAchievement brandYearAchievement,BrandInfo brandPara,HttpServletRequest request) {
+	public String mallYearlySave(BrandYearAchievement brandYearAchievement,BrandInfro brandPara,HttpServletRequest request) {
 		boolean result = false;
 		Person currentUser = CookieUtil.getCurrentUser(request);
 		brandYearAchievement.setCreatedBy(currentUser.getPersonName());

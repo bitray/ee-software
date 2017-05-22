@@ -19,9 +19,4 @@ public class TradeBOImpl implements TradeBO {
 		return tradeTypeMapper.selectBySelective(para);
 	}
 
-    @Override
-    public TradeType getTradeTypeById(Integer id) {
-        return tradeTypeMapper.selectByPrimaryKey(id);
-    }
-
 }
