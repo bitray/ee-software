@@ -32,8 +32,8 @@
 							<li class="active"><a href="#floor" data-toggle="tab">楼层信息</a></li>
 							<li><a href="#trade" data-toggle="tab">业态信息</a></li>
 							<li><a href="#brand" data-toggle="tab">品牌信息</a></li>
-							<li><a href="#account" data-toggle="tab">台账信息</a></li>
-							<li><a href="#view" data-toggle="tab">导视信息</a></li>
+							##<li><a href="#account" data-toggle="tab">台账信息</a></li>
+							##<li><a href="#view" data-toggle="tab">导视信息</a></li>
 						</ul>
 					</div>
 					<div class="col-xs-10">
@@ -41,36 +41,82 @@
 						<div class="tab-content">
 							<div class="tab-pane" id="mall">
 								<div class="x_content">
-									<table id="malltable"
-										class="table table-striped table-bordered">
-										<thead>
-											<tr>
-												<th>序号</th>
-												<th>项目名称</th>
-												<th>面积</th>
-												<th>业态</th>
-												<th>一级业态</th>
-												<th>二级业态</th>
-												<th>开业日期</th>
-												<th>租金类型</th>
-											</tr>
-										</thead>
-										<tbody>
-										#foreach( $mall in $malls)
-											<tr>
-												<th scope="row">$!{velocityCount}</th>
-												<td>$mall.proName</td>
-												<td>$mall.proArea</td>
-												<td>$mall.brandClassNumber</td>
-												<td>$mall.brandType1Num</td>
-												<td>$mall.brandType2Num</td>
-												<td>$mall.proOpenDate</td>
-												<td>$mall.proRentArea</td>
-											</tr>
-										#end
-										</tbody>
-									</table>
-
+<form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+						<div class="form-group">
+							<label class="control-label col-md-3 col-sm-3 col-xs-12"
+								for="proName">项目名称 </label>
+							<div class="col-md-4 col-sm-6 col-xs-12">
+								<input type="text" id="proName" name="proName" value="$mall.proName" readonly
+									required="required" class="form-control col-md-7 col-xs-12">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-3 col-sm-3 col-xs-12"
+								for="proArea">项目体量 </label>
+							<div class="col-md-4 col-sm-6 col-xs-12">
+								<input type="text" id="proArea" name="proArea" value="$mall.proArea" readonly
+									required="required" class="form-control col-md-7 col-xs-12">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-3 col-sm-3 col-xs-12"
+								for="proOpenDate">开业时间 </label>
+							<div class="col-md-4 col-sm-6 col-xs-12">
+								<input id="proOpenDate" class="date-picker form-control" value="$!dateTool.format('yyyy-MM-dd',$$mall.proOpenDate)" readonly
+									required="required" type="text">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-3 col-sm-3 col-xs-12"
+								for="proRentArea">总租赁面积 </label>
+							<div class="col-md-4 col-sm-6 col-xs-12">
+								<input type="text" id="proRentArea" name="proRentArea" value="$mall.proRentArea" readonly
+									required="required" class="form-control col-md-7 col-xs-12">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-3 col-sm-3 col-xs-12"
+								for="brandClassNumber">品牌数量 </label>
+							<div class="col-md-4 col-sm-6 col-xs-12">
+								<input type="text" id="brandClassNumber" name="brandClassNumber" value="$mall.brandClassNumber" readonly
+									required="required" class="form-control col-md-7 col-xs-12">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-3 col-sm-3 col-xs-12"
+								for="last-name">楼层数量 </label>
+							<div class="col-md-4 col-sm-6 col-xs-12">
+								<input type="text" id="last-name" name="last-name"
+									required="required" class="form-control col-md-7 col-xs-12">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-3 col-sm-3 col-xs-12"
+								for="last-name">业态数量 </label>
+							<div class="col-md-4 col-sm-6 col-xs-12">
+								<input type="text" id="last-name" name="last-name"
+									required="required" class="form-control col-md-7 col-xs-12">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-3 col-sm-2 col-xs-12"
+								for="last-name">经营状态 </label>
+							<div class="col-md-3 col-sm-2 col-xs-12">
+								<div id="operation_state" class="btn-group"
+									data-toggle="buttons">
+									<label class="btn btn-default" data-toggle-class="btn-primary"
+										data-toggle-passive-class="btn-default"> <input
+										type="radio" name="state" value="open"> &nbsp; 经营中
+										&nbsp;
+									</label> <label class="btn btn-primary" data-toggle-class="btn-primary"
+										data-toggle-passive-class="btn-default"> <input
+										type="radio" name="state" value="closed"> 已撤铺
+									</label>
+								</div>
+							</div>
+						</div>
+						<br> <br> <br>
+					</form>
 								</div>
 							</div>
 							<div class="tab-pane active" id="floor">
@@ -81,6 +127,9 @@
 											<tr>
 												<th>#</th>
 												<th>楼层名</th>
+                                                                                                <th>楼层英文</th>
+                                                                                                <th>楼层面积</th>
+                                                                                                <th>楼层定位</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -88,6 +137,9 @@
 											<tr>
 												<th scope="row">$!{velocityCount}</th>
 												<td>$elem.floorNumber</td>
+                                                                                                <td>$elem.floorNameEn</td>
+                                                                                                <td>$elem.floorArea</td>
+                                                                                                <td>$elem.floorDef</td>
 											</tr>
 											#end
 										</tbody>
@@ -127,7 +179,7 @@
 												</tr>
 											</thead>
 											<tbody>
-												<#foreach( $elem in $leve1Trades)
+												#foreach( $elem in $leve1Trades)
 												<tr>
 													<th scope="row">$!{velocityCount}</th>
 													<td>$elem.tradeName</td>
@@ -148,7 +200,7 @@
 												</tr>
 											</thead>
 											<tbody>
-												<#foreach( $elem in $leve2Trades)
+												#foreach( $elem in $leve2Trades)
 												<tr>
 													<th scope="row">$!{velocityCount}</th>
 													<td>$elem.tradeName</td>
@@ -167,10 +219,11 @@
 										class="form-horizontal form-label-left">
 										<div class="form-group">
 											<label class="control-label col-md-1 col-sm-2 col-xs-12"
-												for="last-name">品牌名称 </label>
+												for="brandName">品牌名称 </label>
 											<div class="col-md-3 col-sm-3 col-xs-6">
-												<input id="middle-name" class="form-control" type="text"
-													name="middle-name" readonly="readonly">
+												<input id="brandName" class="form-control" type="text"
+													name="middle-name" >
+                                                                                                <input id="brandId" type="hidden" name="brandId" value=""/>
 											</div>
 											<label class="control-label col-md-2 col-sm-2 col-xs-12"
 												for="last-name">次级名称 </label>
@@ -181,121 +234,121 @@
 										</div>
 										<div class="form-group">
 											<label class="control-label col-md-1 col-sm-2 col-xs-12"
-												for="last-name">铺位号 </label>
+												for="poiNum">铺位号 </label>
 											<div class="col-md-3 col-sm-3 col-xs-8">
-												<input id="middle-name" class="form-control" type="text"
-													name="middle-name" readonly="readonly">
+                                                                                            <div class="col-md-6" >
+												<input id="poiNum" class="form-control" type="text"
+													name="poiNum" readonly="readonly">
+</div>
+<div class="col-md-6">
+<button id="chooseBrand" type="button" class="btn btn-success">选择铺位号</button>
+</div>
 											</div>
+                                                                                  
 											<label class="control-label col-md-2 col-sm-2 col-xs-12"
-												for="last-name">开业日期<span class="required">*</span>
+												for="openDate">开业日期<span class="required">*</span>
 											</label>
 											<div class="col-md-3 col-sm-3 col-xs-6">
-												<input id="birthday" class="date-picker form-control"
+												<input id="openDate" class="date-picker form-control"
 													required="required" type="text" readonly="readonly">
 											</div>
 										</div>
 										<div class="form-group">
 											<label class="control-label col-md-1 col-sm-2 col-xs-12"
-												for="last-name">面积 </label>
+												for="brandArea">面积 </label>
 											<div class="col-md-2 col-sm-2 col-xs-12">
-												<input id="middle-name"
+												<input id="brandArea"
 													class="form-control col-md-7 col-xs-12" type="text"
-													name="middle-name" readonly="readonly">
+													name="brandArea" readonly="readonly">
 											</div>
-											<label for="middle-name"
+											<label for="floorNum"
 												class="control-label col-md-1 col-sm-2 col-xs-12">楼层</label>
 											<div class="col-md-2 col-sm-2 col-xs-12">
-												<select class="form-control" readonly="readonly">
-													<option>请选择</option>
-													<option>晴朗</option>
-													<option>降雨</option>
-													<option>雾霾</option>
-													<option>低温</option>
-												</select>
+												<input id="floorNum"
+													class="form-control col-md-7 col-xs-12" type="text"
+													name="floorNum" readonly="readonly">
 											</div>
 
 										</div>
 										<div class="form-group">
 											<label class="control-label col-md-1 col-sm-2 col-xs-12"
-												for="last-name">桌位数 </label>
+												for="tables">桌位数 </label>
 											<div class="col-md-2 col-sm-2 col-xs-12">
-												<input id="middle-name"
+												<input id="tables"
 													class="form-control col-md-7 col-xs-12" type="text"
-													name="middle-name" readonly="readonly">
+													name="tables" readonly="readonly">
 											</div>
 											<label class="control-label col-md-1 col-sm-2 col-xs-12"
-												for="last-name">座位数 </label>
+												for="seats">座位数 </label>
 											<div class="col-md-2 col-sm-2 col-xs-12">
-												<input id="middle-name"
+												<input id="seats"
 													class="form-control col-md-7 col-xs-12" type="text"
-													name="middle-name" readonly="readonly">
+													name="seats" readonly="readonly">
 											</div>
 
 										</div>
 										<div class="form-group">
 											<label class="control-label col-md-1 col-sm-2 col-xs-12"
-												for="type1">一级品类 </label>
+												for="tradeType1">一级品类 </label>
 											<div class="col-md-2 col-sm-2 col-xs-12">
-												<input id="type1" class="form-control col-md-7 col-xs-12"
-													type="text" value="一级品丽" name="middle-name"
+												<input id="tradeType1" class="form-control col-md-7 col-xs-12"
+													type="text" value="" name="tradeType1"
 													readonly="readonly">
 											</div>
 											<label class="control-label col-md-1 col-sm-2 col-xs-12"
-												for="type2">二级品类 </label>
+												for="tradeType2">二级品类 </label>
 											<div class="col-md-2 col-sm-2 col-xs-12">
-												<input id="type2" class="form-control col-md-7 col-xs-12"
-													type="text" value="二级品丽" name="middle-name"
+												<input id="tradeType2" class="form-control col-md-7 col-xs-12"
+													type="text" value="" name="tradeType2"
 													readonly="readonly">
 											</div>
 											<label class="control-label col-md-1 col-sm-2 col-xs-12"
-												for="trade_type">业态 </label>
+												for="tradeType">业态 </label>
 											<div class="col-md-2 col-sm-2 col-xs-12">
-												<input type="text" id="trade_type" name="last-name"
+												<input type="text" id="tradeType" name="tradeType"
 													required="required" class="form-control col-md-7 col-xs-12" readonly="readonly">
 											</div>
-											<button type="submit" class="btn btn-success">选择业态</button>
 										</div>
 										<div class="ln_solid"></div>
 										<div class="form-group">
-											<label for="middle-name"
+											<label for="rentType"
 												class="control-label col-md-1 col-sm-2 col-xs-12">租金类型</label>
 											<div class="col-md-2 col-sm-2 col-xs-12">
-												<select class="form-control" readonly="readonly">
-													<option>请选择</option>
-													<option>晴朗</option>
-													<option>降雨</option>
-													<option>雾霾</option>
-													<option>低温</option>
+												<select id="rentType" class="form-control" readonly="readonly">
+													<option value="0">请选择</option>
+                                                                                                        #foreach( $elem in $rentTypes)
+                                                                                                            <option value="$!{elem.id}">$!{elem.rentName}</option>
+                                                                                                        #end
 												</select>
 											</div>
 										</div>
 										<div class="form-group">
 											<div class="control-label col-md-4 col-sm-2 col-xs-12">
 												<label class="control-label col-md-4 col-sm-2 col-xs-12"
-													for="last-name">标准租金 </label>
+													for="rentStandard">标准租金 </label>
 												<div class="col-md-4 col-sm-2 col-xs-12">
-													<input id="middle-name"
+													<input id="rentStandard"
 														class="form-control" type="text"
-														name="middle-name" readonly="readonly">
+														name="rentStandard" readonly="readonly">
 												</div>
 												<p class="control-label" style="text-align:left">元/平/月</p>
 											</div>
 											<div class="control-label col-md-4 col-sm-2 col-xs-12">
 												<label class="control-label col-md-4 col-sm-2 col-xs-12"
-													for="last-name">抽成 </label>
+													for="commission">抽成 </label>
 												<div class="col-md-4 col-sm-2 col-xs-12">
-													<input id="middle-name"
+													<input id="commission"
 														class="form-control col-md-7 col-xs-12" type="text"
-														name="middle-name" readonly="readonly">
+														name="commission" readonly="readonly">
 												</div>
 											</div>
 											<div class="control-label col-md-4 col-sm-2 col-xs-12">
 												<label class="control-label col-md-5 col-sm-2 col-xs-12"
-													for="last-name">标准租金 </label>
+													for="rentStandard1">标准租金 </label>
 												<div class="col-md-4 col-sm-2 col-xs-12">
-													<input id="middle-name"
+													<input id="rentStandard1"
 														class="form-control col-md-7 col-xs-12" type="text"
-														name="middle-name" readonly="readonly">
+														name="rentStandard1" readonly="readonly">
 												</div>
 												<p class="control-label" style="text-align:left">元/月</p>
 											</div>
@@ -303,19 +356,19 @@
 										<div class="form-group">
 											<div class="control-label col-md-4 col-sm-2 col-xs-12">
 												<label class="control-label col-md-4 col-sm-2 col-xs-12"
-													for="last-name">标准物业费</label>
+													for="propertyStandard">标准物业费</label>
 												<div class="col-md-4 col-sm-2 col-xs-12">
-													<input id="sw1" class="form-control col-md-7 col-xs-12"
-														type="text" name="middle-name" readonly="readonly"/>
+													<input id="propertyStandard" class="form-control col-md-7 col-xs-12"
+														type="text" name="propertyStandard" readonly="readonly"/>
 												</div>
 												<p class="control-label" style="text-align:left">元/平/月</p>
 											</div>
 											<div class="control-label col-md-4 col-sm-2 col-xs-12">
 												<label class="control-label col-md-4 col-sm-2 col-xs-12"
-													for="last-name">固定物业费</label>
+													for="fixedProperty">固定物业费</label>
 												<div class="col-md-4 col-sm-2 col-xs-12">
-													<input id="gd1" class="form-control col-md-7 col-xs-12"
-														type="text" name="middle-name" readonly="readonly">
+													<input id="fixedProperty" class="form-control col-md-7 col-xs-12"
+														type="text" name="fixedProperty" readonly="readonly">
 												</div>
 												<p class="control-label" style="text-align:left">元/月</p>
 											</div>
@@ -325,31 +378,31 @@
 										<div class="form-group">
 											<div class="control-label col-md-4 col-sm-2 col-xs-12">
 												<label class="control-label col-md-4 col-sm-2 col-xs-12"
-													for="last-name">其他标准1 </label>
+													for="otherStandard1">其他标准1 </label>
 												<div class="col-md-4 col-sm-2 col-xs-12">
-													<input id="middle-name"
+													<input id="otherStandard1"
 														class="form-control col-md-7 col-xs-12" type="text"
-														name="middle-name" readonly="readonly">
+														name="otherStandard1" readonly="readonly">
 												</div>
 												<p class="control-label" style="text-align:left">元/平/月</p>
 											</div>
 											<div class="control-label col-md-4 col-sm-2 col-xs-12">
 												<label class="control-label col-md-4 col-sm-2 col-xs-12"
-													for="last-name">其他标准2 </label>
+													for="otherStandard2">其他标准2 </label>
 												<div class="col-md-4 col-sm-2 col-xs-12">
-													<input id="middle-name"
+													<input id="otherStandard2"
 														class="form-control col-md-7 col-xs-12" type="text"
-														name="middle-name" readonly="readonly">
+														name="otherStandard2" readonly="readonly">
 												</div>
 												<p class="control-label" style="text-align:left">元/平/月</p>
 											</div>
 											<div class="control-label col-md-4 col-sm-2 col-xs-12">
 												<label class="control-label col-md-4 col-sm-2 col-xs-12"
-													for="last-name">其他标准3</label>
+													for="otherStandard3">其他标准3</label>
 												<div class="col-md-4 col-sm-2 col-xs-12">
-													<input id="middle-name"
+													<input id="otherStandard3"
 														class="form-control col-md-7 col-xs-12" type="text"
-														name="middle-name" readonly="readonly">
+														name="otherStandard3" readonly="readonly">
 												</div>
 												<p class="control-label" style="text-align:left">元/平/月</p>
 											</div>
@@ -357,31 +410,31 @@
 										<div class="form-group">
 											<div class="control-label col-md-4 col-sm-2 col-xs-12">
 												<label class="control-label col-md-4 col-sm-2 col-xs-12"
-													for="last-name">其他固定1</label>
+													for="otherFixed1">其他固定1</label>
 												<div class="col-md-4 col-sm-2 col-xs-12">
-													<input id="middle-name"
+													<input id="otherFixed1"
 														class="form-control col-md-7 col-xs-12" type="text"
-														name="middle-name" readonly="readonly">
+														name="otherFixed1" readonly="readonly">
 												</div>
 												<p class="control-label" style="text-align:left">元/月</p>
 											</div>
 											<div class="control-label col-md-4 col-sm-2 col-xs-12">
 												<label class="control-label col-md-4 col-sm-2 col-xs-12"
-													for="last-name">其他固定2</label>
+													for="otherFixed2">其他固定2</label>
 												<div class="col-md-4 col-sm-2 col-xs-12">
-													<input id="middle-name"
+													<input id="otherFixed2"
 														class="form-control col-md-7 col-xs-12" type="text"
-														name="middle-name" readonly="readonly">
+														name="otherFixed2" readonly="readonly">
 												</div>
 												<p class="control-label" style="text-align:left">元/月</p>
 											</div>
 											<div class="control-label col-md-4 col-sm-2 col-xs-12">
 												<label class="control-label col-md-4 col-sm-2 col-xs-12"
-													for="last-name">其他固定3</label>
+													for="otherFixed3">其他固定3</label>
 												<div class="col-md-4 col-sm-2 col-xs-12">
-													<input id="middle-name"
+													<input id="otherFixed3"
 														class="form-control col-md-7 col-xs-12" type="text"
-														name="middle-name" readonly="readonly">
+														name="otherFixed3" readonly="readonly">
 												</div>
 												<p class="control-label" style="text-align:left">元/月</p>
 											</div>
@@ -389,49 +442,46 @@
 										<div class="ln_solid"></div>
 										<div class="form-group">
 											<label class="control-label col-md-1 col-sm-2 col-xs-12"
-												for="last-name">经营类型 </label>
+												for="operType">经营类型 </label>
 											<div class="col-md-3 col-sm-2 col-xs-12">
-												<select class="form-control" readonly="readonly">
+												<select id="operType" class="form-control" readonly="readonly">
 													<option>请选择</option>
-													<option>晴朗</option>
-													<option>降雨</option>
-													<option>雾霾</option>
-													<option>低温</option>
+                                                                                                        #foreach( $elem in $operTypes)
+                                                                                                            <option value="$!{elem.dataName}">$!{elem.dataName}</option>
+                                                                                                        #end
 												</select>
 											</div>
 											<label class="control-label col-md-1 col-sm-2 col-xs-12"
-												for="last-name">租赁类型 </label>
+												for="leaseType">租赁类型 </label>
 											<div class="col-md-3 col-sm-2 col-xs-12">
-												<select class="form-control" readonly="readonly">
+												<select id="leaseType" class="form-control" readonly="readonly">
 													<option>请选择</option>
-													<option>晴朗</option>
-													<option>降雨</option>
-													<option>雾霾</option>
-													<option>低温</option>
+													#foreach( $elem in $leaseTypes)
+                                                                                                            <option value="$!{elem.dataName}">$!{elem.dataName}</option>
+                                                                                                        #end
 												</select>
 											</div>
 											<label class="control-label col-md-1 col-sm-2 col-xs-12"
-												for="last-name">经营状态 </label>
+												for="operState">经营状态 </label>
 											<div class="col-md-3 col-sm-2 col-xs-12">
-												<div id="operation_state" class="btn-group"
+												<div id="operState" class="btn-group"
 													data-toggle="buttons">
-													<label class="btn btn-default"
-														data-toggle-class="btn-primary"
-														data-toggle-passive-class="btn-default"> <input
-														type="radio" name="state" value="open" readonly="readonly"> &nbsp; 经营中
-														&nbsp;
-													</label> <label class="btn btn-primary"
-														data-toggle-class="btn-primary"
-														data-toggle-passive-class="btn-default"> <input
-														type="radio" name="state" value="closed" readonly="readonly"> 已撤铺
-													</label>
+                                                                                                        
+                                                                                                        #foreach( $elem in $operStates)
+                                                                                                            <label class="btn btn-primary"
+                                                                                                                    data-toggle-class="btn-primary"
+                                                                                                                    data-toggle-passive-class="btn-default"> <input
+                                                                                                                    type="radio" name="state" value="$!{elem.id}" readonly="readonly"> &nbsp; $!{elem.dataName}
+                                                                                                                    &nbsp;
+                                                                                                            </label> 
+                                                                                                        #end
 												</div>
 											</div>
 										</div>
 									</form>
 								</div>
 							</div>
-							<div class="tab-pane" id="account">
+							<!--<div class="tab-pane" id="account">
 								<div class="x_content">
 									<table id="accounttable"
 										class="table table-striped table-bordered">
@@ -575,7 +625,38 @@
 		</div>
 	</div>
 </div>
-
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+													&times;
+												</button>
+												<h4 class="modal-title" id="myModalLabel">
+													选择品牌
+												</h4>
+											</div>
+											<div class="modal-body">
+												<table class="table">
+													<thead>
+														<tr>
+															<th>#</th>
+															<th>品牌名</th>
+															<th>铺位号</th>
+															<th>楼层</th>
+															<th>选择</th>
+														</tr>
+													</thead>
+													<tbody id="datatable">
+													</tbody>
+												</table>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+												</button>
+											</div>
+										</div><!-- /.modal-content -->
+									</div><!-- /.modal -->
 <script src="${rc.contextPath}/static/vendors/moment/min/moment.min.js"></script>
 <script
 	src="${rc.contextPath}/static/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
@@ -595,59 +676,85 @@
 <script
 	src="${rc.contextPath}/static/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
 <script type="text/javascript">
+                function cho(id,name,poi){
+                    $("#brandId").val(id);
+                    $("#brandName").val(name);
+                    $("#poi").val(poi);
+                    $('#myModal').modal('hide');
+                    getBrandInfo(name,id);
+		}
+        function getBrandInfo(brandName,brandId){
+           $.post('${rc.contextPath}/data_query/getBrandInfoByName', {
+				brandName : brandName,
+                                brandId:brandId
+			}, function(data, status) {
+				if(data!=null){
+                                    $('#poiNum').val(data.poiNum);
+                                    var openDate=new Date(data.startTime);
+                                    $('#openDate').val(openDate.toLocaleDateString());
+                                    $('#brandArea').val(data.brandArea);
+                                    $('#floorNum').val(data.floor);
+                                    $('#tables').val(data.tableNum);
+                                    $('#seats').val(data.seatsNum);
+                                    $('#tradeType1').val(data.brandIdLevel1Str);
+                                    $('#tradeType2').val(data.brandIdLevel2Str);
+                                    $('#tradeType').val(data.brandIdRootStr);
+                                    $('#rentType').val(data.rentType);
+                                    $('#rentStandard').val(data.fixedRent);
+                                    $('#commission').val(data.comRentStandard);
+                                    $('#propertyStandard').val(data.propertyStandard);
+                                    $('#fixedProperty').val(data.fixedProperty);
+                                    $('#otherStandard1').val(data.otherChargeStd1);
+                                    $('#otherStandard2').val(data.otherChargeStd2);
+                                    $('#otherStandard3').val(data.otherChargeStd3);
+                                    $('#otherFixed1').val(data.otherFixedCharge1);
+                                    $('#otherFixed2').val(data.otherFixedCharge2);
+                                    $('#otherFixed3').val(data.otherFixedCharge3);
+                                    $('#operType').val(data.operType);
+                                    $('#leaseType').val(data.leaseType);
+                                    $('#operState').val(data.operState);
+                                    $("input[name=state][value=" + data.operState + "]").attr("checked", true); 
+				}
+			});
+        }
 	$(document).ready(function() {
-		$('#birthday').daterangepicker({
+		$('#proOpenDate').daterangepicker({
 			singleDatePicker : true,
 			calender_style : "picker_4"
 		}, function(start, end, label) {
 			console.log(start.toISOString(), end.toISOString(), label);
 		});
+
 		$('#birthday2').daterangepicker({
 			singleDatePicker : true,
 			calender_style : "picker_4"
 		}, function(start, end, label) {
 			console.log(start.toISOString(), end.toISOString(), label);
 		});
-	});
-
-	$(document).ready(function() {
-		var malltableButton = function() {
-			if ($("#malltable").length) {
-				$("#malltable").DataTable({
-					dom : "Bfrtip",
-					buttons : [ {
-						extend : "excel",
-						className : "btn-sm"
-					} ],
-					responsive : true
-				});
-			}
-		};
-
-		var floortableButton = function() {
-			if ($("#floortable").length) {
-				$("#floortable").DataTable({
-					dom : "Bfrtip",
-					buttons : [ {
-						extend : "excel",
-						className : "btn-sm"
-					} ],
-					responsive : true
-				});
-			}
-		};
-
-		TableManageButtons = function() {
-			"use strict";
-			return {
-				init : function() {
-					malltableButton();
-					floortableButton();
+                $("#chooseBrand").click(function(){
+			$.post("${rc.contextPath}/base_data/brand_data_List", 
+			 function(data, status) {
+				if(data!=null){
+					var rows=$("#datatable").find("tr").length;
+					if(rows==0){
+						for(var i=0;i<data.length;i++){
+							var brand=data[i];
+							var row="<tr><td>"+(i+1)+"</td><td>"+brand.brandName+"</td><td>"+brand.poiNum+"</td><td>"+brand.floor+"</td><td><button onclick=\"cho('"+brand.id+"','"+brand.brandName+"','"+brand.poiNum+"')\">选择</button></td></tr>"
+							$('#datatable').append(row);
+						}
+					}
+					$('#myModal').modal('show');
 				}
-			};
-		}();
-
-		TableManageButtons.init();
+			});
+			
+		}); 
+                $('#brandName').keyup(function(e){
+                    var brandName=this.value;
+                    var brandId=$('#brandId').val();
+                    if(e.keyCode==13 && brandName!=null && brandName!=''){
+                        getBrandInfo(brandName,brandId);
+                    }
+                });
 	});
 </script>
 <!-- /bootstrap-daterangepicker -->

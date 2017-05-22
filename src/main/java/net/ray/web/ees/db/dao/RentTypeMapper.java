@@ -1,5 +1,7 @@
 package net.ray.web.ees.db.dao;
 
+import java.util.List;
+import net.ray.web.ees.db.eo.BaseData;
 import net.ray.web.ees.db.eo.RentType;
 
 public interface RentTypeMapper {
@@ -50,4 +52,8 @@ public interface RentTypeMapper {
      * @mbg.generated Thu Nov 24 17:04:55 CST 2016
      */
     int updateByPrimaryKey(RentType record);
+    
+    public List<RentType> selectBySelective(RentType para);
+    
+    public List<BaseData> selectBaseDataBySelective(BaseData para);
 }

@@ -303,6 +303,7 @@
       <if test="isAlive != null">
         is_alive = #{isAlive,jdbcType=BIT} and
       </if>
+      1=1
     </where>
   </select>
 </mapper>
