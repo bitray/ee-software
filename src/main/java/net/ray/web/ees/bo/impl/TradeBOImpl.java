@@ -12,11 +12,18 @@ import net.ray.web.ees.db.eo.TradeType;
 
 @Service
 public class TradeBOImpl implements TradeBO {
-	@Resource
-	private TradeTypeMapper tradeTypeMapper;
-	@Override
-	public List<TradeType> geTradeTypesBySelective(TradeType para) {
-		return tradeTypeMapper.selectBySelective(para);
-	}
+
+    @Resource
+    private TradeTypeMapper tradeTypeMapper;
+
+    @Override
+    public List<TradeType> geTradeTypesBySelective(TradeType para) {
+        return tradeTypeMapper.selectBySelective(para);
+    }
+
+    @Override
+    public TradeType getTradeTypeById(Integer id) {
+         return tradeTypeMapper.selectByPrimaryKey(id);
+    }
 
 }
