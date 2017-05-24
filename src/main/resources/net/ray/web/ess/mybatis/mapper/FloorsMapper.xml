@@ -165,7 +165,6 @@
         floor_name_en = #{floorNameEn,jdbcType=VARCHAR},
         floor_area = #{floorArea,jdbcType=FLOAT},
         floor_def = #{floorDef,jdbcType=VARCHAR}
-      </if>
     where id = #{id,jdbcType=INTEGER}
   </update>
   

@@ -46,7 +46,7 @@ public class TestMybatis extends TestCase {
 		}
 		SqlSessionFactory sqlSessionFactory2 = new SqlSessionFactoryBuilder().build(inputStream2);
 		SqlSession sqlsession2=sqlSessionFactory2.openSession();
-		UserH2 userh2=sqlsession2.selectOne("net.ray.web.ees.eo.UserH2.findById", 1);
-		System.out.println(userh2.getName());
+//		UserH2 userh2=sqlsession2.selectOne("net.ray.web.ees.eo.UserH2.findById", 1);
+//		System.out.println(userh2.getName());
 	}
 }
